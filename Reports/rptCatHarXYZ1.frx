@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="08/25/2019 21:44:30" ReportInfo.Modified="09/09/2019 21:59:29" ReportInfo.CreatorVersion="2019.3.0.0" PrintSettings.Duplex="Simplex">
+  <Styles>
+    <Style Name="Title" Font="Arial, 12pt, style=Bold"/>
+    <Style Name="Header" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Group" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Data" Font="Arial, 10pt"/>
+    <Style Name="Footer" Font="Arial, 10pt"/>
+    <Style Name="EvenRows" Fill.Color="WhiteSmoke" Font="Arial, 10pt"/>
+  </Styles>
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqM7gJFg/iaLrqMhRfGy5lGgFo0+51BNc2OaU03Sgs7o3oQZS3EzYrj2Kr0MdGCinQSfI028PF+bPvFr1vmmd1vr0pipur0Zf05HhCN8s2crNR/pk41c903pBlqB0l5iO5MhejZ2UVyHQd2ryrUEBxos55jVBvE7eoFz4YR3x8QWlRL5oICavbEMPzP9BDzQ+ypKJD1/ZIjKzSkRwsitN0ZKejdkcKSmKOCCcDKKEBqVQ=">
+      <TableDataSource Name="Table" Alias="CatHar" DataType="System.Int32" Enabled="true" SelectCommand="exec spCatHar @idperiode, @nip">
+        <Column Name="IdUnitKerja" DataType="System.Int32"/>
+        <Column Name="NMUNIT" DataType="System.String"/>
+        <Column Name="NIP" DataType="System.String"/>
+        <Column Name="Nama" DataType="System.String"/>
+        <Column Name="NIPAL" DataType="System.String"/>
+        <Column Name="NAMAAL" DataType="System.String"/>
+        <Column Name="NIPAAL" DataType="System.String"/>
+        <Column Name="NAMAAAL" DataType="System.String"/>
+        <Column Name="IdJabatan" DataType="System.Int32"/>
+        <Column Name="NMJAB" DataType="System.String"/>
+        <Column Name="IdJabatanAtas1" DataType="System.Int32"/>
+        <Column Name="NMJABAL" DataType="System.String"/>
+        <Column Name="IdJabatanAtas2" DataType="System.Int32"/>
+        <Column Name="NMJABAAL" DataType="System.String"/>
+        <Column Name="IdKaSKPD" DataType="System.String"/>
+        <Column Name="NMKASKPD" DataType="System.String"/>
+        <Column Name="IDKASKPD1" DataType="System.Int32"/>
+        <Column Name="NMJABKASKPD" DataType="System.String"/>
+        <Column Name="IdJamKerjaPola" DataType="System.Int32"/>
+        <Column Name="NMPOLA" DataType="System.String"/>
+        <Column Name="IDPERIODE" DataType="System.String"/>
+        <Column Name="AJUKAN1" DataType="System.DateTime"/>
+        <Column Name="AJUKAN2" DataType="System.DateTime"/>
+        <Column Name="SELESAI" DataType="System.DateTime"/>
+        <Column Name="HKYbs" DataType="System.Int32"/>
+        <Column Name="DurasiYbs" DataType="System.Int32"/>
+        <Column Name="DurasiCatHar" DataType="System.Int32"/>
+        <Column Name="DurasiAL" DataType="System.Int32"/>
+        <Column Name="DurasiAAL" DataType="System.Int32"/>
+        <Column Name="TANGGAL" DataType="System.DateTime"/>
+        <Column Name="WaktuMulai" DataType="System.TimeSpan"/>
+        <Column Name="WaktuHingga" DataType="System.TimeSpan"/>
+        <Column Name="Aktifitas" DataType="System.String"/>
+        <Column Name="Tempat" DataType="System.String"/>
+        <Column Name="Hasil" DataType="System.String"/>
+        <Column Name="WaktuSetuju1" DataType="System.Int32"/>
+        <Column Name="WaktuSetuju2" DataType="System.Int32"/>
+        <CommandParameter Name="@idperiode" DataType="22" DefaultValue="2019.03"/>
+        <CommandParameter Name="@nip" DataType="22" DefaultValue="197308172000031008"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+    <Parameter Name="idperiode" DataType="System.Double" Expression="2019.03"/>
+    <Parameter Name="nip" DataType="System.Int64" Expression="197308172000031008"/>
+    <Parameter Name="NilaiAkhir" DataType="System.Int32" Expression="([CatHar.DurasiAAL]*100)/[CatHar.DurasiYbs]"/>
+  </Dictionary>
+  <ReportPage Name="Page1" PaperWidth="330" PaperHeight="210" LeftMargin="20" TopMargin="15" RightMargin="20" BottomMargin="15" FirstPageSource="261" OtherPagesSource="292" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="1096.2" Height="179.55">
+      <TextObject Name="Text1" Left="9.45" Top="9.45" Width="1067.85" Height="18.9" Text="Pemerintah Kota Bukittinggi" HorzAlign="Center" Font="Times New Roman, 12pt"/>
+      <TextObject Name="Text77" Left="9.45" Top="28.35" Width="1067.85" Height="18.9" Text="[CatHar.NMUNIT]" HorzAlign="Center" Font="Times New Roman, 12pt"/>
+      <TextObject Name="Text78" Left="9.45" Top="47.25" Width="1067.85" Height="18.9" Text="Laporan Aktifitas Harian Periode [CatHar.IDPERIODE]" HorzAlign="Center" Font="Times New Roman, 12pt"/>
+      <LineObject Name="Line2" Top="56.7" Diagonal="true"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="182.63" Width="1096.2" Height="28.35" CanGrow="true">
+      <TableObject Name="Table1" Left="9.45" Width="1067.85" Height="28.35" Border.Lines="All">
+        <TableColumn Name="Column27"/>
+        <TableColumn Name="Column28" Width="56.7"/>
+        <TableColumn Name="Column29" Width="56.7"/>
+        <TableColumn Name="Column30" Width="378"/>
+        <TableColumn Name="Column31" Width="132.3"/>
+        <TableColumn Name="Column32" Width="264.6"/>
+        <TableColumn Name="Column33" Width="56.7"/>
+        <TableColumn Name="Column34" Width="56.7"/>
+        <TableRow Name="Row4" Height="28.35">
+          <TableCell Name="Cell56" Border.Lines="Left, Top, Bottom" Text="Tanggal" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+          <TableCell Name="Cell57" Border.Lines="Left, Top, Bottom" Text="Mulai" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+          <TableCell Name="Cell58" Border.Lines="Left, Top, Bottom" Text="Hingga" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+          <TableCell Name="Cell59" Border.Lines="Left, Top, Bottom" Text="Aktifitas" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+          <TableCell Name="Cell60" Border.Lines="Left, Top, Bottom" Text="Tempat" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt, style=Bold"/>
+          <TableCell Name="Cell81" Border.Lines="Left, Top, Bottom" Text="Hasil" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt, style=Bold"/>
+          <TableCell Name="Cell86" Border.Lines="Left, Top, Bottom" Text="Setuju AL" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt, style=Bold"/>
+          <TableCell Name="Cell91" Border.Lines="All" Text="Setuju AAL" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt, style=Bold"/>
+        </TableRow>
+      </TableObject>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="214.05" Width="1096.2" Height="30.24" CanGrow="true" Style="Data" EvenStyle="Data" DataSource="Table">
+      <TableObject Name="Table2" Left="9.45" Width="1067.85" Height="30.24">
+        <TableColumn Name="Column19"/>
+        <TableColumn Name="Column20" Width="56.7"/>
+        <TableColumn Name="Column21" Width="56.7"/>
+        <TableColumn Name="Column22" Width="378"/>
+        <TableColumn Name="Column23" Width="132.3"/>
+        <TableColumn Name="Column24" Width="264.6"/>
+        <TableColumn Name="Column25" Width="56.7"/>
+        <TableColumn Name="Column26" Width="56.7"/>
+        <TableRow Name="Row3" Height="30.24" AutoSize="true">
+          <TableCell Name="Cell19" Border.Lines="Left" Text="[CatHar.TANGGAL]" Format="Date" Format.Format="d" HorzAlign="Center" Font="Times New Roman, 9pt"/>
+          <TableCell Name="Cell20" Border.Lines="Left" Text="[CatHar.WaktuMulai]" Format="Time" Format.Format="T" HorzAlign="Center" Font="Times New Roman, 9pt"/>
+          <TableCell Name="Cell21" Border.Lines="Left" Text="[CatHar.WaktuHingga]" Format="Time" Format.Format="T" HorzAlign="Center" Font="Times New Roman, 9pt"/>
+          <TableCell Name="Cell22" Border.Lines="Left" Text="[CatHar.Aktifitas]" Font="Times New Roman, 9pt"/>
+          <TableCell Name="Cell23" Border.Lines="Left" Text="[CatHar.Tempat]" Font="Times New Roman, 9pt"/>
+          <TableCell Name="Cell45" Border.Lines="Left" Text="[CatHar.Hasil]" Font="Times New Roman, 9pt"/>
+          <TableCell Name="Cell50" Border.Lines="Left" Text="[CatHar.WaktuSetuju1]" HorzAlign="Center" Font="Times New Roman, 10pt"/>
+          <TableCell Name="Cell55" Border.Lines="Left, Right" Text="[CatHar.WaktuSetuju2]" HorzAlign="Center" Font="Times New Roman, 10pt"/>
+        </TableRow>
+      </TableObject>
+      <ChildBand Name="Child1" Top="247.37" Width="1096.2">
+        <LineObject Name="Line1" Left="9.45" Width="1067.85" Diagonal="true"/>
+      </ChildBand>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="250.45" Width="1096.2" Height="292.95"/>
+    <PageFooterBand Name="PageFooter1" Top="546.47" Width="1096.2" Height="18.9">
+      <TextObject Name="Text2" Left="973.35" Width="94.5" Height="18.9" Text="[Page#]" HorzAlign="Right" VertAlign="Center" Font="Times New Roman, 9pt, style=Bold"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

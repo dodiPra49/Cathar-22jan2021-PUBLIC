@@ -1,0 +1,42 @@
+﻿@model IEnumerable<New.Models.ListHari>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+    <div class="col-6">
+
+        <h4>Daftar Hari</h4>
+        <br />
+
+        <table class="table table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Uraian)
+                    </th>
+                    <th>
+                        <a class='btn btn-info' asp-action="Create"><i class="fa fa-plus"></i></a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Uraian)
+                        </td>
+                        <td>
+                            <a class='btn btn-success btn-sm' asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a>&nbsp;
+                            @*<a asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
+                            <a class='btn btn-danger btn-sm' asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>

@@ -1,0 +1,79 @@
+﻿@page
+@using New.Utility
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<br />
+<h2 class="text-info">Buat User Baru</h2>
+<br />
+
+<form method="post" asp-route-returnUrl="@Model.ReturnUrl">
+    @*<div class="border backgroundWhite">*@
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Input.NIP" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Input.NIP" class="form-control" />
+            </div>
+            <span asp-validation-for="Input.NIP" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Input.UnitKerja" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <select asp-for="Input.UnitKerja" class="form-control" asp-items="ViewBag.IdUnitKerja"></select>
+                @*<input asp-for="Input.UnitKerja" class="form-control" />*@
+            </div>
+            <span asp-validation-for="Input.UnitKerja" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Input.Password" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Input.Password" class="form-control" />
+            </div>
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Input.ConfirmPassword" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Input.ConfirmPassword" class="form-control" />
+            </div>
+            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+        </div>
+
+        @if (User.IsInRole(SD.SuperAdmin))
+        {
+            <div class="form-group row">
+                <div class="col-2">
+                </div>
+                <div class="col-5">
+                    <input type="radio" name="rdUserRole" value="@SD.User" checked /> @SD.User
+                    <input type="radio" name="rdUserRole" value="@SD.Admin" checked /> @SD.Admin
+                    <input type="radio" name="rdUserRole" value="@SD.AdminBKPSDM" checked /> @SD.AdminBKPSDM
+                    <input type="radio" name="rdUserRole" value="@SD.SuperAdmin" checked /> @SD.SuperAdmin
+                </div>
+            </div>
+        }
+
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <button type="submit" class="btn btn-primary form-control">Register</button>
+            </div>
+        </div>
+    @*</div>*@
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

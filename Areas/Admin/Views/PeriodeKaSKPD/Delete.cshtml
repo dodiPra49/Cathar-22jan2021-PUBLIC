@@ -1,0 +1,68 @@
+﻿@model New.Models.PeriodeKaSKPD
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h4>Apakah anda yakin menghapus data ini?</h4>
+<hr />
+
+@*<div class="form-group row">
+    <label class="control-label col-sm-1"> </label>
+    <div class="col-sm-4">
+        <h5>//HAPUS DATA KA SKPD</h5>
+    </div>
+</div>*@
+
+<div>
+
+    <dl class="row">
+        <dt class="col-sm-1">
+            Periode
+        </dt>
+        <dd class="col-sm-4 border-bottom">
+            @Html.DisplayFor(model => model.IdPeriode)
+        </dd>
+    </dl>
+
+    <dl class="row">
+        <dt class="col-sm-1">
+            Jabatan
+        </dt>
+        <dd class="col-sm-4 border-bottom">
+            @Html.DisplayFor(model => model.IdJabatanNavigation.Uraian)
+        </dd>
+    </dl>
+
+    <dl class="row">
+        <dt class="col-sm-1">
+            NIP
+        </dt>
+        <dd class="col-sm-4 border-bottom">
+            @Html.DisplayFor(model => model.IdKaSKPD)
+        </dd>
+    </dl>
+
+    <dl class="row">
+        <dt class="col-sm-1">
+            Nama
+        </dt>
+        <dd class="col-sm-4 border-bottom">
+            @Html.DisplayFor(model => model.IdKaSKPDNavigation.Nama)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <div class="form-group row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
+                @*<input type="hidden" asp-for="IdPeriode" />
+                    <input type="hidden" asp-for="IdUnitKerja" />*@
+                <input type="submit" asp-route-idPeriode="@Model.IdPeriode" asp-route-idUnit="@Model.IdUnitKerja" value="Hapus" class="btn btn-danger" />
+                <a asp-action="Index" class="btn btn-success">Kembali</a>
+            </div>
+        </div>
+    </form>
+</div>

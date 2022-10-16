@@ -1,0 +1,46 @@
+﻿@model IEnumerable<New.Models.noEntriCathar>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2><center>PNS BELUM ENTRI AKTIVITAS HARIAN DI APLIKASI SICATHAR </center></h2>
+<h3> <center> @ViewData["skpd"]  </center></h3>
+<h4><center>Periode: @ViewData["periode"]    </center></h4>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th align="left" width="10%">
+                @Html.DisplayNameFor(model => model.NIP)
+            </th>
+            <th align="left">
+                @Html.DisplayNameFor(model => model.Nama)
+            </th>
+            <th align="left">
+                @Html.DisplayNameFor(model => model.Jabatan)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td align="left" width="10%">
+                    @Html.DisplayFor(modelItem => item.NIP)
+                </td>
+                <td align="left">
+                    @Html.DisplayFor(modelItem => item.Nama)
+                </td>
+                <td align="left">
+                    @Html.DisplayFor(modelItem => item.Jabatan)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+

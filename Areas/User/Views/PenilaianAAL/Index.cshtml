@@ -1,0 +1,63 @@
+﻿@model IEnumerable<New.Models.PeriodeNIP>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="col-sm-10">
+    <br />
+    <h4>Penilaian Atasan dari Atasan Langsung</h4></br>
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th>
+                    <div style="color:#E95420">NIP</div>
+                </th>
+                <th>
+                    <div style="color:#E95420">Nama</div>
+                </th>
+                <th>
+                    <div style="color:#E95420">Diajukan Tanggal</div>
+                </th>
+                <th>
+                    <div style="color:#E95420">Dinilai AL</div>
+                </th>
+                <th>
+                    <div style="color:#E95420">Dinilai AAL</div>
+                </th>
+                <th>
+                    <div style="color:#E95420">Proses</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nip)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NipNavigation.Nama)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ajukan1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ajukan2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Selesai)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Pilih", "Pilih", new { idperiode = item.IdPeriode, nip=item.Nip })
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<New.Models.JamKerjaPolaDt>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MasukA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KeluarA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MasukB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KeluarB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdDowNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPolaNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MasukA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KeluarA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MasukB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KeluarB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDowNavigation.Uraian)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPolaNavigation.Uraian)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

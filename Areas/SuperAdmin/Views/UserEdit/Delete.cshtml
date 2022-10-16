@@ -1,0 +1,52 @@
+﻿@model New.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<br />
+<h4>Apakah anda yakin menghapus unit kerja ini?</h4>
+<hr />
+
+<div>
+    @*<div class="row">
+            <label class="col-2"></label>
+            <div class="col-4">
+                <h4>//  SKPD .(del)</h4>
+            </div>
+        </div>*@
+
+    <div class="row">
+        <label class="col-2">Nip</label>
+        <label class="col-4 border-bottom">@Model.NIP</label>
+    </div>
+
+    <div class="row">
+        <label class="col-2">Uraian</label>
+        <label class="col-4 border-bottom">@Model.Nama</label>
+    </div>
+
+    <div class="row">
+        <label class="col-2">Valid Till</label>
+        <label class="col-4 border-bottom">@Model.UnitKerja</label>
+    </div>
+
+
+    <form asp-action="Delete">
+        <div class="form-group row">
+
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2">
+                <input type="hidden" asp-for="NIP" />
+                
+                <input type="submit" value="Hapus" class="btn btn-danger" />
+                <a class='btn btn-success' asp-action="Index">Kembali</a>
+            </div>
+        </div>
+    </form>
+
+
+</div>

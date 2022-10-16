@@ -1,0 +1,65 @@
+﻿@model New.Models.JamKerjaPolaDt
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["IdPilih"] = Model.IdPola;
+}
+
+<br />
+<h4>Tambahkan Detail Jam Kerja Sesuai Pola Dibawah</h4>
+<hr />
+
+<form asp-action="Create">
+
+    <div class="row">
+        <div class="col-md-6">
+
+            @*<div class="form-group row">
+                <label class="control-label col-sm-3"></label>
+                <div class="col-sm-9">
+                    <h5>//Jam Kerja Pola.(add)</h5>
+                </div>
+            </div>*@
+
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="IdPola" type="hidden" />
+
+            <div class="form-group row">
+                <label class="control-label col-md-3">Pola </label>
+                <label  class="control-label col-md-6 border-bottom" >@ViewBag.NamaPola</label>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-3">Hari</label>
+                <select asp-for="IdDow" class="form-control col-md-6" asp-items="ViewBag.IdDow"></select>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-3"> Sesi 1</label>
+                <input asp-for="MasukA" class="form-control form-control col-md-3" />
+                <span asp-validation-for="MasukA" class="text-danger"></span>
+                &nbsp;
+                <input asp-for="KeluarA" class="form-control form-control col-md-3" />
+                <span asp-validation-for="KeluarA" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-3"> Sesi 2</label>
+                <input asp-for="MasukB" class="form-control form-control col-md-3" />
+                <span asp-validation-for="MasukB" class="text-danger"></span>
+                &nbsp;
+                <input asp-for="KeluarB" class="form-control form-control col-md-3" />
+                <span asp-validation-for="KeluarB" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group row">
+                <label class="control-label col-md-3"> </label>
+                <input type="submit" value="Simpan" class="btn btn-primary" />
+                &nbsp;
+                <a asp-action="Index" asp-route-idPolaPilih="@ViewBag.IdPilih" class="btn btn-success">Kembali</a>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+

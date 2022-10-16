@@ -1,0 +1,50 @@
+﻿@model New.Models.Pegawai
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Pegawai</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nama)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nama)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GelarDepan)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GelarDepan)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GelarBelakang)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GelarBelakang)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TempatLahir)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TempatLahir)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TgLLahir)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TgLLahir)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.NIP">Edit</a>
+    <a class='btn btn-outline-primary' asp-action="Index"><i class="fa fa-plus"></i> Kembali</a>
+    
+</div>

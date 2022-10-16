@@ -1,0 +1,64 @@
+﻿@model New.Models.Jabatan
+
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="IdUnitKerja" />
+        <input type="hidden" asp-for="Urut" />
+        <input type="hidden" asp-for="IdJabatan" />
+
+        <div class="form-group row">
+            <label class="control-label col-sm-1"> </label>
+            <div class="col-sm-4">
+                <h5>EDIT JABATAN</h5>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Uraian" class="control-label col-sm-1"></label>
+            <div class="col-sm-4">
+                <input asp-for="Uraian" class="form-control" />
+                <span asp-validation-for="Uraian" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="IdEselon" class="control-label col-sm-1"></label>
+            <div class="col-sm-4">
+                <input asp-for="IdEselon" class="form-control" />
+                <span asp-validation-for="IdEselon" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="IdAtas" class="control-label col-sm-1"></label>
+            <div class="col-sm-4">
+                <input asp-for="IdAtas" class="form-control" />
+                <span asp-validation-for="IdAtas" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="ValidTill" class="control-label col-sm-1"></label>
+            <div class="col-sm-4">
+                <input asp-for="ValidTill" class="form-control" />
+                <span asp-validation-for="ValidTill" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-sm-1"></label>
+            <div class="col-sm-4">
+                <input type="submit" value="Simpan" class="btn btn-primary btn-sm" />
+                <a asp-action="Index"
+                   asp-route-IdUnitKerja="@ViewBag.IdUnitKerja"
+                   asp-route-SubDiv="1"
+                   asp-route-IdJabatan="0" class="btn btn-success btn-sm">
+                    Kembali
+                </a>
+            </div>
+        </div>
+    </form>
+

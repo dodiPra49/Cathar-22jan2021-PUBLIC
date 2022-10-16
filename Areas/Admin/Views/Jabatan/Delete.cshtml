@@ -1,0 +1,65 @@
+﻿@model New.Models.Jabatan
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Jabatan</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Uraian)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Uraian)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdEselon)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdEselon)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Urut)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Urut)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdJabatan)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdJabatan)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdAtas)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdAtas)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdUnitKerjaNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdUnitKerjaNavigation.Uraian)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="IdUnitKerja"/>
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+         
+
+        <a asp-action="Index"
+           asp-route-IdUnitKerja="@ViewBag.IdUnitKerja"
+           asp-route-SubDiv="1"
+           asp-route-IdJabatan="0" class="btn btn-info btn-sm">
+            Kembali
+        </a>
+    </form>
+</div>

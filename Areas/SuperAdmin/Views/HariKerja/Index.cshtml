@@ -1,0 +1,93 @@
+﻿@model PagedResult<New.Models.HariKerja>
+
+    @using New.Models;
+    @{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <br />
+    @{
+    var urlTemplate = Url.Action() + "?page={0}";
+    var request = ViewContext.HttpContext.Request;
+    foreach (var key in request.Query.Keys)
+    {
+    if (key == "page")
+    {
+    continue;
+    }
+    urlTemplate += "&" + key + "=" + request.Query[key];
+    }
+
+    var startIndex = Math.Max(Model.CurrentPage - 5, 1);
+    var finishIndex = Math.Min(Model.CurrentPage + 5, Model.PageCount);
+    }
+
+<div class="col-12">
+    <div class="row">
+        <div class="col-sm-8">
+            <h4>Hari Kerja</h4>
+        </div>
+    </div>
+</div>
+
+<div class="col-12">
+    </br>
+    <table class="table table-striped table-sm ">
+        <thead class="thead-light">
+            <tr>
+                <th>
+                    <a asp-area="SuperAdmin" asp-action="Index" asp-route-sortOrder="@ViewData[" TglParm"]">TANGGAL</a>
+                </th>
+                <th>
+                    <a asp-area="SuperAdmin" asp-action="Index" asp-route-sortOrder="@ViewData[" IdDesc"]">ID STATUS</a>
+
+                </th>
+                <th>
+                    <div style="color:#007bff">KETERANGAN</div>
+                </th>
+                <th>
+                    <div class="nav justify-content-end">
+                        <a class='btn btn-primary' asp-action="Create"><i class="fa fa-plus"></i></a>
+                        &nbsp;
+                        <a class='btn btn-warning' asp-action="Print"><i class="fa fa-print"></i></a>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Results)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tanggal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdLibur)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdLiburNavigation.Uraian)
+                    </td>
+                    <td>
+                        @{
+
+                            int tgl = @item.Tanggal.Day;
+                            int bulan = @item.Tanggal.Month;
+                            int tahun = @item.Tanggal.Year;
+                            //.ToString();
+                        }
+                        <div class="nav justify-content-end">
+                            <a asp-action="Edit" asp-route-tgl=@tgl asp-route-bulan=@bulan asp-route-tahun=@tahun
+                               class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                            
+                            @*<a asp-action="Delete" asp-route-tgl=@tgl asp-route-bulan=@bulan asp-route-tahun=@tahun
+                               class="btn btn-danger btn-sm"><i class="fa fa-times"></i></a>*@
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+    @(await Component.InvokeAsync<PagerViewComponent>(Model))

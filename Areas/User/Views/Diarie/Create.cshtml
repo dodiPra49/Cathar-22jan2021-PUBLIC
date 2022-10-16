@@ -1,0 +1,79 @@
+﻿@model New.Models.Diary
+
+@{
+    ViewData["Title"] = "Tambah Aktifitas Harian";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Diary</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdPeriode" class="control-label"></label>
+                <select asp-for="IdPeriode" class ="form-control" asp-items="ViewBag.IdPeriode"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nip" class="control-label"></label>
+                <select asp-for="Nip" class ="form-control" asp-items="ViewBag.Nip"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tanggal" class="control-label"></label>
+                <input asp-for="Tanggal" class="form-control" />
+                <span asp-validation-for="Tanggal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WaktuMulai" class="control-label"></label>
+                <input asp-for="WaktuMulai" class="form-control" />
+                <span asp-validation-for="WaktuMulai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WaktuHingga" class="control-label"></label>
+                <input asp-for="WaktuHingga" class="form-control" />
+                <span asp-validation-for="WaktuHingga" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Aktifitas" class="control-label"></label>
+                <input asp-for="Aktifitas" class="form-control" />
+                <span asp-validation-for="Aktifitas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tempat" class="control-label"></label>
+                <input asp-for="Tempat" class="form-control" />
+                <span asp-validation-for="Tempat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hasil" class="control-label"></label>
+                <input asp-for="Hasil" class="form-control" />
+                <span asp-validation-for="Hasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WaktuSetuju1" class="control-label"></label>
+                <input asp-for="WaktuSetuju1" class="form-control" />
+                <span asp-validation-for="WaktuSetuju1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WaktuSetuju2" class="control-label"></label>
+                <input asp-for="WaktuSetuju2" class="form-control" />
+                <span asp-validation-for="WaktuSetuju2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

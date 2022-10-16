@@ -1,0 +1,61 @@
+﻿@model IEnumerable<New.Models.Pegawai>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create"><button type="button" class="btn btn-primary">Create New</button></a>
+    <a asp-action="Print"><button type="button" class="btn btn-primary">Print</button></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nama)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GelarDepan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GelarBelakang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahir)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TgLLahir)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GelarDepan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GelarBelakang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahir)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TgLLahir)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.NIP"><button type="button" class="btn btn-primary btn-sm">Edit</button></a> |
+                <a asp-action="Details" asp-route-id="@item.NIP"><button type="button" class="btn btn-success btn-sm"">Details</button></a> |
+                <a asp-action="Delete" asp-route-id="@item.NIP"><button type="button" class="btn btn-danger btn-sm"">Delete</button></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

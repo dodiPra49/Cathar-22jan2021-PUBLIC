@@ -1,0 +1,80 @@
+﻿@model New.Models.PeriodeKaSKPD
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+     
+}
+
+<br />
+<h4>Ubah Periode Kepala SKPD</h4>
+<hr />
+
+<form asp-action="Edit">
+
+    @*<div class="form-group row">
+        <label class="control-label col-sm-1"> </label>
+        <div class="col-sm-4">
+            <h5>//EDIT KA UNIT</h5>
+        </div>
+    </div>*@
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="IdPeriode" />
+    <input type="hidden" asp-for="IdUnitKerja" />
+
+    <div class="form-group row">
+        <label class="control-label col-sm-1">Jabatan</label>
+        <div class="col-sm-4">
+            <select asp-for="IdJabatan" class="form-control" asp-items="ViewBag.IdJabatan"></select>
+            <span asp-validation-for="IdJabatan" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-sm-1">Nip</label>
+        <div class="col-sm-4">
+            <input id="nNip" type="text" asp-for="IdKaSKPD" onchange="SetNamaByNip()" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group  row">
+
+        <label class="control-label col-sm-1">Nama</label>
+        <div class="col-sm-4">
+            <input type="text" name="namaKaUnit" id="namaKaUnit" value="@ViewBag.NamaPeg" readonly class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-sm-1"></label>
+        <div class="col-sm-4">
+            <input type="submit" value="Simpan" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-success">Kembali</a>
+        </div>
+    </div>
+</form>
+
+
+
+
+<script>
+
+    function SetNamaByNip() {
+
+        debugger;
+
+        var nip = document.getElementById("nNip").value;
+        var s = document.getElementById("namaKaUnit");
+
+        $.ajax({
+            url: '/Admin/PeriodeKaSKPD/GetNamaByNip/' + nip,
+            type: 'GET',
+            dataType: 'text',
+            success: function (data) {
+                s.value = JSON.parse(data);
+            }
+        });
+
+    }
+</script>
+

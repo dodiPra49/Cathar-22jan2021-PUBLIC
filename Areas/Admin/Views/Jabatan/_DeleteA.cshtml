@@ -1,0 +1,63 @@
+﻿@model New.Models.Jabatan
+
+
+<div class="form-group row">
+    <label class="control-label col-sm-1"> </label>
+    <div class="col-sm-4">
+        <h5>HAPUS  JABATAN</h5>
+    </div>
+</div>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-1">
+            @Html.DisplayNameFor(model => model.Uraian)
+        </dt>
+        <dd class="col-sm-4 border-bottom">
+            @Html.DisplayFor(model => model.Uraian)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-1">
+            @Html.DisplayNameFor(model => model.IdEselon)
+        </dt>
+        <dd class="col-sm-4 border-bottom">
+            @Html.DisplayFor(model => model.IdEselon)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-1">
+            @Html.DisplayNameFor(model => model.IdAtas)
+        </dt>
+        <dd class="col-sm-4 border-bottom">
+            @Html.DisplayFor(model => model.IdAtas)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-1">
+            Unit 
+        </dt>
+        <dd class="col-sm-4 border-bottom">
+            @Html.DisplayFor(model => model.IdUnitKerjaNavigation.Uraian)
+        </dd>
+    </dl>
+
+
+    <form asp-action="Delete">
+        <div class="form-group row">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="IdUnitKerja" />
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
+                <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
+                <a asp-action="Index"
+                   asp-route-IdUnitKerja ="@ViewBag.IdUnitKerja"
+                   asp-route-SubDiv="1"
+                   asp-route-IdJabatan="0" class="btn btn-success btn-sm">
+                    Kembali
+                </a>
+                 
+            </div>
+        </div>
+    </form>
+</div>

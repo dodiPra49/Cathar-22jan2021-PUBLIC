@@ -1,0 +1,89 @@
+﻿@model PagedResult<New.Models.PeriodeKaSKPD>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+@{
+    var urlTemplate = Url.Action() + "?page={0}";
+    var request = ViewContext.HttpContext.Request;
+    foreach (var key in request.Query.Keys)
+    {
+        if (key == "page")
+        {
+            continue;
+        }
+        urlTemplate += "&" + key + "=" + request.Query[key];
+    }
+
+    var startIndex = Math.Max(Model.CurrentPage - 5, 1);
+    var finishIndex = Math.Min(Model.CurrentPage + 5, Model.PageCount);
+}
+
+<h4>Daftar Periode Kepala @ViewBag.NamaUnitKerja</h4>
+
+<br />
+
+<table class="table table-striped table-sm">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                <div style="color:#007bff">ID PERIODE</div>
+            </th>
+            @*<th>
+                Unit
+            </th>*@
+            <th>
+                <div style="color:#007bff">JABATAN</div>
+            </th>
+            <th>
+                <div style="color:#007bff">NAMA</div>
+            </th>
+            <th>
+                <div class="nav justify-content-end">
+                    <a class='btn btn-primary' asp-action="Create"><i class="fa fa-user-plus"></i></a>
+                    &nbsp;  &nbsp;
+                    <a class='btn btn-warning' asp-action="Print"><i class="fa fa-print"></i></a>
+                </div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Results)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPeriode)                
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.IdUnitKerja)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.IdJabatanNavigation.Uraian)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdKaSKPDNavigation.Nama)
+            </td>
+            <td>
+                <div class="nav justify-content-end">
+                    <a asp-action="Edit" asp-route-idPeriode="@item.IdPeriode" asp-route-idUnit="@item.IdUnitKerja" class="btn btn-success btn-sm">
+
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    &nbsp;  &nbsp;
+                    <a asp-action="Delete" asp-route-idPeriode="@item.IdPeriode" asp-route-idUnit="@item.IdUnitKerja" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></a>
+                </div>
+
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@(await Component.InvokeAsync<PagerViewComponent>(Model))

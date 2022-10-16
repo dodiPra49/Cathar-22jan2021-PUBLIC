@@ -1,0 +1,54 @@
+﻿@model New.Models.JamKerjaPolaDt
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>JamKerjaPolaDt</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdPola" class="control-label"></label>
+                <select asp-for="IdPola" class ="form-control" asp-items="ViewBag.IdPola"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdDow" class="control-label"></label>
+                <select asp-for="IdDow" class ="form-control" asp-items="ViewBag.IdDow"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasukA" class="control-label"></label>
+                <input asp-for="MasukA" class="form-control" />
+                <span asp-validation-for="MasukA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KeluarA" class="control-label"></label>
+                <input asp-for="KeluarA" class="form-control" />
+                <span asp-validation-for="KeluarA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasukB" class="control-label"></label>
+                <input asp-for="MasukB" class="form-control" />
+                <span asp-validation-for="MasukB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KeluarB" class="control-label"></label>
+                <input asp-for="KeluarB" class="form-control" />
+                <span asp-validation-for="KeluarB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

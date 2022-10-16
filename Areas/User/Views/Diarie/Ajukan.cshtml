@@ -1,0 +1,143 @@
+﻿@model New.Models.PeriodeNIP
+
+@{
+    ViewData["Title"] = "Ajukan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<div class="row">
+    <div class="col-sm-6">
+
+        <div class="form-group row">
+            <h5 class="col-sm-12 border-bottom">PENGAJUAN CATHAR KE ATASAN LANGSUNG</h5>            
+        </div>
+        <br />
+        <div class="form-group row">
+            <label class="control-label col-sm-3">Nip/Id</label>
+            <label class="control-label col-sm-9 border-bottom">@Model.Nip // @Model.IdPeriode</label>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-sm-3">Nama</label>
+            <label class="control-label col-sm-9 border-bottom">@Model.NipNavigation.Nama</label>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-sm-3">Pola Kerja</label>
+            <label class="control-label col-sm-9 border-bottom"><@Model.IdJamKerjaPola> @Model.IdJamKerjaPolaNavigation.Uraian</label>
+        </div>
+
+        <br />
+
+        <div class="form-group row">
+            <h6 class="col-sm-12">ATASAN LANGSUNG</h6>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-sm-3">Nip/Nama</label>
+            <label class="control-label col-sm-9 border-bottom">@Model.NipAtas1 // @Model.NipAtas1Navigation.Nama</label>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-sm-3">Jabatan</label>
+            <label class="control-label col-sm-9 border-bottom">@Model.IdJabatanAtas1Navigation.Uraian</label>
+        </div>
+
+        <br />
+        <div class="form-group row">
+            <h6 class="col-sm-12">ATASAN LANGSUNG DARI ATASAN LANGSUNG</h6>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-sm-3">Nip/Nama</label>
+            <label class="control-label col-sm-9 border-bottom">@Model.NipAtas2 // @Model.NipAtas2Navigation.Nama</label>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-sm-3">Jabatan</label>
+            <label class="control-label col-sm-9 border-bottom">@Model.IdJabatanAtas2Navigation.Uraian</label>
+        </div>
+
+    </div>
+
+    <div class="col-sm-6">
+
+        <div class="form-group row">
+            <h5 class="col-sm-12 border-bottom">RINGKASAN PENGAJUAN</h5>
+        </div>
+        <br />
+
+        <div class="form-group row">
+            <label class="control-label col-sm-4">Hari Kalender</label>
+            <label class="control-label col-sm-3 border-bottom">@ViewBag.HariKalender Hari</label>
+            <label class="control-label col-sm-1"></label>
+            <label class="control-label col-sm-3 border-bottom">Nilai <@ViewBag.Nilai> </label>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-sm-4">Hari/Jam Kerja Ybs</label>
+            <label class="control-label col-sm-3 border-bottom">@ViewBag.HariKerjaYbs Hari</label>
+            <label class="control-label col-sm-1"></label>
+            <label class="control-label col-sm-3 border-bottom">@ViewBag.HariKerjaYbsJam Menit</label>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-sm-4">Hari/Jam CatHar Ybs</label>
+            <label class="control-label col-sm-3 border-bottom">@ViewBag.NCatHar items</label>
+            <label class="control-label col-sm-1"></label>
+            <label class="control-label col-sm-3 border-bottom">@ViewBag.DurasiCatHar Menit</label>
+        </div>
+        @if (ViewBag.CatHarOverLap != null)
+        {
+            <h6 class="col-sm-12">//OverLap Waktu </h6>
+            @foreach (var item in ViewBag.CatHarOverLap)
+            {
+                <label class="control-label"> [@item.Tanggal => @item.WaktuMulai - @item.WaktuHingga </label>
+                //@item.Tanggal
+            }
+
+        }
+
+        @if (ViewBag.CatHarMinus != null)
+        {
+            <h6 class="col-sm-12">//Durasi Waktu Minus</h6>
+            @foreach (var item in ViewBag.CatHarMinus)
+            {
+                <label class="control-label"> [@item.Tanggal => @item.WaktuMulai - @item.WaktuHingga </label>
+                //@item.Tanggal
+            }
+
+        }
+
+        @if (ViewBag.CatHarOverLap == null && ViewBag.CatHarMinus == null)
+
+        {
+            <br />
+            <form asp-action="Ajukan">
+                <div class="form-group row">
+
+                    <input name="HKYbs" value="@ViewBag.HariKerjaYbs" hidden />
+                    <input name="DurasiYbs" value="@ViewBag.HariKerjaYbsJam" hidden />
+                    <input name="DurasiCatHar" value="@ViewBag.DurasiCatHar" hidden />
+
+                    <input name="idperiode" value="@Model.IdPeriode" hidden />
+                    <input name="nip" value="@Model.Nip" hidden />
+                    <label class="control-label col-sm-3">Ajukan Tanggal</label>
+                    <input asp-for="Ajukan1" class="form-control col-sm-4" /> &nbsp;
+                    @if (Model.Ajukan1 == null)
+                    {
+                        <input type="submit" value="Ajukan" name="AjukanAtauBatal" class="btn btn-danger" />
+
+                    }
+                    else
+                    {
+                        <input type="submit" value="Batalkan" name="AjukanAtauBatal" class="btn btn-danger" />
+
+                    }
+                    &nbsp;
+                    <a asp-action="Index" class="btn btn-success">Kembali</a>
+
+                </div>
+            </form>
+        }
+
+
+    </div>
+</div>
+
+
