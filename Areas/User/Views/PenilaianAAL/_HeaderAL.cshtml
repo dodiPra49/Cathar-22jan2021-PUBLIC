@@ -1,0 +1,71 @@
+﻿@model New.Models.PeriodeNIP
+
+
+
+<br />
+
+<div class="row">
+    <div class="col-sm-6">
+
+
+        <div class="form-group row">
+            <label class="control-label col-sm-3">Pegawai</label>
+            <label class="control-label col-sm-9 border-bottom">@Model.Nip // @Model.IdPeriode</label>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-sm-3"></label>
+            <label class="control-label col-sm-9 border-bottom">@Model.NipNavigation.Nama</label>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-sm-3">Atasan Langsung</label>
+            <label class="control-label col-sm-9 border-bottom">@Model.NipAtas1 // @Model.NipAtas1Navigation.Nama</label>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-sm-3"></label>
+            <label class="control-label col-sm-9 border-bottom">@Model.IdJabatanAtas1Navigation.Uraian</label>
+        </div>
+
+    </div>
+
+    <div class="col-sm-6">
+
+        <div class="form-group row">
+            <label class="control-label col-sm-3">Atasan AL</label>
+            <label class="control-label col-sm-9 border-bottom">@Model.NipAtas2 // @Model.NipAtas2Navigation.Nama</label>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-sm-3">Jabatan</label>
+            <label class="control-label col-sm-9 border-bottom">@Model.IdJabatanAtas2Navigation.Uraian</label>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-sm-3">Ybs</label>
+            <label class="control-label col-sm-9 border-bottom">
+                @ViewBag.HariKerjaYbs hari //
+                @ViewBag.HariKerjaYbsJam menit //
+                @ViewBag.NCatHar item //
+                @ViewBag.DurasiCatHar menit //
+                Ajuan <@ViewBag.Nilai>
+            </label>
+
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-sm-3">AL / AAL</label>
+            <label class="control-label col-sm-4 border-bottom">
+                @ViewBag.DurasiAL menit //
+                Nilai @ViewBag.NilaiAL 
+            </label>
+            <label class="control-label col-sm-1"></label>
+            <label class="control-label col-sm-4 border-bottom">
+                @ViewBag.DurasiAAL menit //
+                Nilai @ViewBag.NilaiAAL 
+            </label>
+        </div>
+
+
+
+    </div>
+</div>
+
+

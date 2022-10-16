@@ -1,0 +1,47 @@
+﻿@model New.Models.HariKerja
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<div class="form-group row">
+    <label class="control-label col-sm-1"> </label>
+    <div class="col-sm-4">
+        <h5>//HAPUS  JABATAN</h5>
+    </div>
+</div>
+
+<div>
+
+    <dl class="row">
+        <dt class="col-sm-1">
+            @Html.DisplayNameFor(model => model.Tanggal)
+        </dt>
+        <dd class="col-sm-4 border-bottom">
+            @Html.DisplayFor(model => model.Tanggal)
+        </dd>
+    </dl>
+
+    <dl class="row">
+        <dt class="col-sm-1">
+            Id Libur
+        </dt>
+        <dd class="col-sm-4 border-bottom">
+            @Html.DisplayFor(model => model.IdLiburNavigation.Uraian)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <div class="form-group row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
+                <input type="hidden" asp-for="Tanggal" />
+                <input type="submit" value="Delete" class="btn btn-danger" />
+                <a asp-action="Index" class="btn btn-info">Kembali</a>
+            </div>
+        </div>
+    </form>
+</div>

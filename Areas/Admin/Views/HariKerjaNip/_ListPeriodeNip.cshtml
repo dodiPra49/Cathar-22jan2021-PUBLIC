@@ -1,0 +1,59 @@
+﻿@model IEnumerable<New.ViewModel.PegawaiPeriodeUnitList>
+
+@using New.Utility
+
+<h7><b>DAFTAR PNS</b></h7>
+
+@if (@Model.Count() != 0)
+{
+    <table class="table  table-sm small border border-danger" id="pegawai" width="120%" margin-top=0>
+        <thead>
+            <tr>
+
+                <th>
+                    Nip
+                </th>
+                <th width="100px">
+                    Nama
+                </th>
+
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nip)
+                    </td>
+                    <td width="100px">
+                        @Html.DisplayFor(modelItem => item.Nama)
+                    </td>
+
+                    <td>
+                        <div class="nav justify-content-end">
+                            <a asp-action="index" asp-route-idnip="@item.Nip"
+                               asp-route-idpola="@item.IdPola"
+                               class="btn btn-danger btn-sm">
+                                <i class="fa fa-plus"></i>
+                            </a>
+
+                        </div>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h5>Tidak ada records </h5>
+}
+
+
+
+
+

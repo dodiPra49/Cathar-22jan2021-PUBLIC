@@ -1,0 +1,163 @@
+﻿@model List<New.Models.Diary>
+
+@using New.ViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var idd = 0;
+    var row = Model.FirstOrDefault();
+    if (row != null)
+    {
+        idd = row.Id;
+    }
+    DateTime? tgl = ViewBag.Ajukan2;
+
+}
+
+@using (@Html.BeginForm("Pilih", "PenilaianAL", FormMethod.Post))
+{
+    <div class="col-sm-12">
+        <br />
+        <h4>Penilaian Atasan Langsung</h4>
+        <div id="HeaderAL">
+
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group row ">
+                <label class="control-label col-sm-3">Disetujui Tgl :</label>
+                <input name="Ajukan2" class="form-control col-sm-4" type="date" value=TempData["Ajukan2"] /> &nbsp;
+                <input type="submit" value="Simpan" class="btn btn-danger" />
+            </div>
+        </div>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>
+                        Tanggal
+                    </th>
+                    <th>
+                        Waktu
+                    </th>
+                    <th>
+                        Aktifitas
+                    </th>
+                    <th>
+                        Tempat
+                    </th>
+                    <th>
+                        Hasil
+                    </th>
+                    <th>
+                        Durasi
+                        (Menit)
+                    </th>
+                    <th>
+                        Disetujui
+                        @*Setuju
+                            (Menit)*@
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    @Html.HiddenFor(model => model[i].Id)
+                    @Html.HiddenFor(model => model[i].IdPeriode)
+                    @Html.HiddenFor(model => model[i].Nip)
+                    @*@Html.HiddenFor(model => model[i].Tanggal)
+                        @Html.HiddenFor(model => model[i].WaktuMulai)
+                        @Html.HiddenFor(model => model[i].WaktuHingga)
+                        @Html.HiddenFor(model => model[i].Aktifitas)
+                        @Html.HiddenFor(model => model[i].Tempat)
+                        @Html.HiddenFor(model => model[i].Hasil)
+                        @Html.HiddenFor(model => model[i].WaktuSetuju2)*@
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => model[i].Tanggal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model[i].WaktuMulai) - @Html.DisplayFor(model => model[i].WaktuHingga)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model[i].Aktifitas)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model[i].Tempat)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model[i].Hasil)
+                        </td>
+
+                        <td>
+                            @{
+                                TimeSpan mulai = @Model[i].WaktuMulai;
+                                TimeSpan hingga = @Model[i].WaktuHingga;
+                                int estDurasi = (int)hingga.Subtract(mulai).TotalMinutes;
+
+                            }
+                            @estDurasi
+                        </td>
+                        <td>
+                            @{
+                                if (@Model[i].WaktuSetuju1 == null)
+                                {
+                                    <input class="form-control" asp-for="@Model[i].WaktuSetuju1" value="@estDurasi" />
+                                }
+                                else
+                                {
+                                    <input class="form-control" asp-for="@Model[i].WaktuSetuju1" />
+                                }
+                            }
+                        </td>
+
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        &nbsp;
+    </div>
+}
+
+@section scripts
+{
+
+    <script type="text/javascript">
+
+
+
+        $(document).ready(function () {
+            debugger;
+            CallFunction();
+        });
+
+
+        function CallFunction() {
+
+
+            var PostBackURL = '/User/PenilaianAL/GetHeaderAL'
+            $.ajax({
+                type: "GET",
+                url: PostBackURL,
+                contentType: "application/json; charset=utf-8",
+                data: { "Id": @idd },
+                cache: false,
+                datatyype: "json",
+                success: function (data) {
+                    $('#HeaderAL').html(data);
+
+                }
+                ,
+                error: function () {
+                    alert("Dynamic content load failed");
+                }
+            });
+        }
+
+    </script>
+}

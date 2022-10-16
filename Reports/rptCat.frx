@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="08/28/2019 13:59:07" ReportInfo.Modified="08/28/2019 14:11:26" ReportInfo.CreatorVersion="2019.3.23.0">
+  <Styles Name="Standard">
+    <Style Name="Title" Font="Arial, 12pt, style=Bold"/>
+    <Style Name="Header" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Group" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Data" Font="Arial, 10pt"/>
+    <Style Name="Footer" Font="Arial, 10pt"/>
+    <Style Name="EvenRows" Fill.Color="WhiteSmoke" Font="Arial, 10pt"/>
+  </Styles>
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqM3/HbiZANEYP3Y6oNtE7mrUmT0ytl94C6DYS4DXvgc8JqhVjVQGe7Sc2pOMNI3eDegGILRjEcK2LpGewmv/Cp7A/xFjEzjfGAqKlaWhx71ECUp2QX7AEHNi+TgbRaXcbYbsclVLHzkrKWqvzBfIZePpAirP+Rww+JsY0iryfXdpW7Vyxdw8CIKno+M+ec4HL">
+      <TableDataSource Name="Table" DataType="System.Int32" Enabled="true" SelectCommand="EXEC DBO.SPSELFDIARY @NIP">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="IdPeriode" DataType="System.String"/>
+        <Column Name="Nip" DataType="System.String"/>
+        <Column Name="Tanggal" DataType="System.DateTime"/>
+        <Column Name="WaktuMulai" DataType="System.TimeSpan"/>
+        <Column Name="WaktuHingga" DataType="System.TimeSpan"/>
+        <Column Name="Aktifitas" DataType="System.String"/>
+        <Column Name="Tempat" DataType="System.String"/>
+        <Column Name="Hasil" DataType="System.String"/>
+        <Column Name="WaktuSetuju1" DataType="System.Int32"/>
+        <Column Name="WaktuSetuju2" DataType="System.Int32"/>
+        <CommandParameter Name="NIP" DataType="22" Expression="[Parameter]"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+    <Parameter Name="Parameter" DataType="System.Char"/>
+  </Dictionary>
+  <ReportPage Name="Page1" Landscape="true" PaperWidth="297" PaperHeight="210" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="1047.06" Height="37.8">
+      <TextObject Name="Text1" Width="1047.06" Height="37.8" Dock="Fill" Text="Table" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold" Style="Title"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="41.8" Width="1047.06" Height="28.35">
+      <TextObject Name="Text3" Width="94.5" Height="18.9" Text="Id" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text5" Left="94.5" Width="94.5" Height="18.9" Text="IdPeriode" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text7" Left="189" Width="94.5" Height="18.9" Text="Nip" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text9" Left="283.5" Width="94.5" Height="18.9" Text="Tanggal" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text11" Left="378" Width="94.5" Height="18.9" Text="WaktuMulai" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text13" Left="472.5" Width="94.5" Height="18.9" Text="WaktuHingga" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text15" Left="567" Width="94.5" Height="18.9" Text="Aktifitas" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text17" Left="661.5" Width="94.5" Height="18.9" Text="Tempat" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text19" Left="756" Width="94.5" Height="18.9" Text="Hasil" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text21" Left="850.5" Width="94.5" Height="18.9" Text="WaktuSetuju1" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text23" Left="945" Width="94.5" Height="18.9" Text="WaktuSetuju2" Font="Arial, 10pt, style=Bold" Style="Header"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="74.15" Width="1047.06" Height="18.9" EvenStyle="EvenRows" DataSource="Table">
+      <TextObject Name="Text2" Width="94.5" Height="18.9" Text="[Table.Id]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text4" Left="94.5" Width="94.5" Height="18.9" Text="[Table.IdPeriode]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text6" Left="189" Width="94.5" Height="18.9" Text="[Table.Nip]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text8" Left="283.5" Width="94.5" Height="18.9" Text="[Table.Tanggal]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text10" Left="378" Width="94.5" Height="18.9" Text="[Table.WaktuMulai]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text12" Left="472.5" Width="94.5" Height="18.9" Text="[Table.WaktuHingga]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text14" Left="567" Width="94.5" Height="18.9" Text="[Table.Aktifitas]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text16" Left="661.5" Width="94.5" Height="18.9" Text="[Table.Tempat]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text18" Left="756" Width="94.5" Height="18.9" Text="[Table.Hasil]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text20" Left="850.5" Width="94.5" Height="18.9" Text="[Table.WaktuSetuju1]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text22" Left="945" Width="94.5" Height="18.9" Text="[Table.WaktuSetuju2]" Font="Arial, 10pt" Style="Data"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="97.05" Width="1047.06" Height="18.9">
+      <TextObject Name="Text24" Width="1047.06" Height="18.9" Dock="Fill" Text="[PageN]" HorzAlign="Right" Font="Arial, 10pt" Style="Footer"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

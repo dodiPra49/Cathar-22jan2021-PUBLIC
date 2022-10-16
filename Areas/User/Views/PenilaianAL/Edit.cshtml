@@ -1,0 +1,73 @@
+﻿@model New.Models.PeriodeNIP
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>PeriodeNIP</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdPeriode" />
+            <input type="hidden" asp-for="Nip" />
+            <div class="form-group">
+                <label asp-for="IdUnitKerja" class="control-label"></label>
+                <select asp-for="IdUnitKerja" class="form-control" asp-items="ViewBag.IdUnitKerja"></select>
+                <span asp-validation-for="IdUnitKerja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdJabatan" class="control-label"></label>
+                <select asp-for="IdJabatan" class="form-control" asp-items="ViewBag.IdJabatan"></select>
+                <span asp-validation-for="IdJabatan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NipAtas1" class="control-label"></label>
+                <select asp-for="NipAtas1" class="form-control" asp-items="ViewBag.NipAtas1"></select>
+                <span asp-validation-for="NipAtas1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NipAtas2" class="control-label"></label>
+                <select asp-for="NipAtas2" class="form-control" asp-items="ViewBag.NipAtas2"></select>
+                <span asp-validation-for="NipAtas2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdJabatanAtas1" class="control-label"></label>
+                <select asp-for="IdJabatanAtas1" class="form-control" asp-items="ViewBag.IdJabatanAtas1"></select>
+                <span asp-validation-for="IdJabatanAtas1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdJabatanAtas2" class="control-label"></label>
+                <select asp-for="IdJabatanAtas2" class="form-control" asp-items="ViewBag.IdJabatanAtas2"></select>
+                <span asp-validation-for="IdJabatanAtas2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdJamKerjaPola" class="control-label"></label>
+                <select asp-for="IdJamKerjaPola" class="form-control" asp-items="ViewBag.IdJamKerjaPola"></select>
+                <span asp-validation-for="IdJamKerjaPola" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ajukan1" class="control-label"></label>
+                <input asp-for="Ajukan1" class="form-control" />
+                <span asp-validation-for="Ajukan1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ajukan2" class="control-label"></label>
+                <input asp-for="Ajukan2" class="form-control" />
+                <span asp-validation-for="Ajukan2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

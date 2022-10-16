@@ -1,0 +1,58 @@
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Http
+@using New.Repositories
+@using New.Utility
+
+@inject IHttpContextAccessor HttpContextAccessor
+@inject SignInManager<IdentityUser>     SignInManager
+@inject UserManager<IdentityUser>         UserManager
+@inject ServiceUser varServiceUser
+
+@{
+    //var x = new SD();
+    //x.Nip = User.Identity.Name.ToString();
+    //SD = x;
+
+}
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        
+        HttpContextAccessor.HttpContext.Session.SetString(SD.ssNip, User.Identity.Name);
+    <li class="nav-item">
+        @*<a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/SetPassword" title="Manage">
+            Selamat Datang @User.Identity.Name  !
+        </a>*@
+        <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/SetPassword" title="Manage">
+            Selamat Datang @varServiceUser.GetUserNama()  !
+        </a>
+       @* <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/SetPassword" title="Manage">*@
+            @*[@varServiceUser.GetPeriode() // @varServiceUser.GetToday().ToShortDateString()]*@  
+        @*</a>*@
+    </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout">
+                @*asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "SuperAdmin" })"*@
+                <button type="submit" class="nav-link btn btn-link text-light">Keluar</button>
+            </form>
+        </li>
+
+        //HttpContextAccessor.HttpContext.Session.SetString(SD.ssNip, User.Identity.Name);
+        //SD.Nip = User.Identity.Name;
+        //SD.IdUnit = varServiceUser.GetIdUnitKerja(User.Identity.Name);
+        //HttpContextAccessor.HttpContext.Session.varServiceUser.GetIdUnitKerja(User.Identity.Name)(SD.ssNip, User.Identity.Name);
+        //if (HttpContextAccessor.HttpContext.Session.GetInt32(SD.ssIdUnit) == null ||
+        //    HttpContextAccessor.HttpContext.Session.GetInt32(SD.ssIdUnit) == 0)
+        //{
+        //    HttpContextAccessor.HttpContext.Session.SetInt32(SD.ssIdUnit,
+        //    varServiceUser.GetIdUnitKerja(User.Identity.Name));
+        //}
+
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+    }
+</ul>

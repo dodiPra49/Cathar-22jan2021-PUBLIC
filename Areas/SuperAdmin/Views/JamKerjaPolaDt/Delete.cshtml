@@ -1,0 +1,56 @@
+﻿@model New.Models.JamKerjaPolaDt
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h4>Apakah anda yakin menghapus data ini?</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+
+        @*<div class="form-group row">
+            <label class="control-label col-sm-3"></label>
+            <div class="col-sm-9">
+                <h5>//Jam Kerja Pola .(delete)</h5>
+            </div>
+        </div>*@
+
+        <div class="row">
+            <label class="control-label col-sm-3">Pola</label>
+            <label class="control-label col-sm-9 border-bottom">@Model.IdPolaNavigation.Uraian</label>
+        </div>
+        <div class="row">
+            <label class="control-label col-sm-3">Hari</label>
+            <label class="control-label col-sm-9 border-bottom">@Model.IdDowNavigation.Uraian</label>
+        </div>
+        <div class="row">
+            <label class="control-label col-sm-3">Sesi 1</label>
+            <label class="control-label col-sm-4 border-bottom">@Model.MasukA - @Model.KeluarA</label>
+            <label class="control-label col-sm-4 border-bottom">>>@Model.MasukA.Subtract(@Model.KeluarA) </label>
+        </div>        <div class="row">
+            <label class="control-label col-sm-3">Sesi 2</label>
+            <label class="control-label col-sm-4 border-bottom">@Model.MasukB - @Model.KeluarB </label>
+            <label class="control-label col-sm-4 border-bottom">>>@Model.MasukB.Subtract(@Model.KeluarB)</label>
+        </div>
+        <br />
+        <form asp-action="Delete">
+            <div class="form-group row">
+                <input type="hidden" asp-for="IdPola" />
+                <input type="hidden" asp-for="IdDow" />
+
+                <label class="control-label col-sm-3"></label>
+
+                <input type="submit" value="Hapus" class="btn btn-danger" />
+                &nbsp;
+                <a class="btn btn-success" asp-action="Index"
+                   asp-route-idPolaPilih="@Model.IdPola">Kembali</a>
+            </div>
+        </form>
+
+
+    </div>
+</div>

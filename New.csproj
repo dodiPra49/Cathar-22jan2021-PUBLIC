@@ -1,0 +1,116 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>aspnet-New-0F3C35EE-9422-4DCE-BF64-A0E38BE85507</UserSecretsId>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20190807115026_JabatanAddValidTill.cs" />
+    <Compile Remove="Data\Migrations\20190807115026_JabatanAddValidTill.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190818051140_addDiariAjuan.cs" />
+    <Compile Remove="Data\Migrations\20190818051140_addDiariAjuan.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\netcoreapp2.2\New.deps.json" />
+    <Content Include="bin\Debug\netcoreapp2.2\New.runtimeconfig.dev.json" />
+    <Content Include="bin\Debug\netcoreapp2.2\New.runtimeconfig.json" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.11.3" />
+    <PackageReference Include="FastReport.Data.MsSql" Version="2018.2.3" />
+    <PackageReference Include="FastReport.OpenSource" Version="2019.3.0" />
+    <PackageReference Include="FastReport.OpenSource.Export.PdfSimple" Version="2019.4.0" />
+    <PackageReference Include="FastReport.OpenSource.Web" Version="2019.3.0" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
+    <PackageReference Include="MySql.Data" Version="8.0.21" />
+    <PackageReference Include="NWebsec.AspNetCore.Middleware" Version="2.0.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="bin\Release\netcoreapp2.2\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="Areas\Admin\Views\HariKerjaNip\Create.cshtml" />
+    <None Include="Areas\Admin\Views\HariKerjaNip\Delete.cshtml" />
+    <None Include="Areas\Admin\Views\HariKerjaNip\Details.cshtml" />
+    <None Include="Areas\Admin\Views\HariKerjaNip\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\HariKerjaNip\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Jabatan\Create.cshtml" />
+    <None Include="Areas\Admin\Views\Jabatan\Delete.cshtml" />
+    <None Include="Areas\Admin\Views\Jabatan\Details.cshtml" />
+    <None Include="Areas\Admin\Views\Jabatan\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\Jabatan\Index.cshtml" />
+    <None Include="Areas\Admin\Views\PeriodeKaSKPD\Create.cshtml" />
+    <None Include="Areas\Admin\Views\PeriodeKaSKPD\Delete.cshtml" />
+    <None Include="Areas\Admin\Views\PeriodeKaSKPD\Details.cshtml" />
+    <None Include="Areas\Admin\Views\PeriodeKaSKPD\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\PeriodeKaSKPD\Index.cshtml" />
+    <None Include="Areas\Admin\Views\PeriodeNIP\Create.cshtml" />
+    <None Include="Areas\Admin\Views\PeriodeNIP\Delete.cshtml" />
+    <None Include="Areas\Admin\Views\PeriodeNIP\Details.cshtml" />
+    <None Include="Areas\Admin\Views\PeriodeNIP\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\PeriodeNIP\Index.cshtml" />
+    <None Include="Areas\Admin\Views\_ViewImports.cshtml" />
+    <None Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\HariKerjaStatus\Create.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\HariKerjaStatus\Delete.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\HariKerjaStatus\Details.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\HariKerjaStatus\Edit.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\HariKerjaStatus\Index.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\Home\Index.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\Home\Privacy.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\Pegawai\Create.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\Pegawai\Delete.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\Pegawai\Details.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\Pegawai\Edit.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\Pegawai\Index.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\Pegawai\Index2.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\Pegawai\Print.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\Periode\Create.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\Periode\Delete.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\Periode\Details.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\Periode\Edit.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\Periode\Index.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\UnitKerja\Create.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\UnitKerja\Delete.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\UnitKerja\Details.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\UnitKerja\Edit.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\UnitKerja\Index.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\_ViewImports.cshtml" />
+    <None Include="Areas\SuperAdmin\Views\_ViewStart.cshtml" />
+    <None Include="Areas\User\Views\Diarie\Create.cshtml" />
+    <None Include="Areas\User\Views\Diarie\Delete.cshtml" />
+    <None Include="Areas\User\Views\Diarie\Details.cshtml" />
+    <None Include="Areas\User\Views\Diarie\Edit.cshtml" />
+    <None Include="Areas\User\Views\Diarie\Index.cshtml" />
+    <None Include="Areas\User\Views\_ViewImports.cshtml" />
+    <None Include="Areas\User\Views\_ViewStart.cshtml" />
+    <None Include="bin\Debug\netcoreapp2.2\New.dll" />
+    <None Include="bin\Debug\netcoreapp2.2\New.pdb" />
+    <None Include="bin\Debug\netcoreapp2.2\New.Views.dll" />
+    <None Include="bin\Debug\netcoreapp2.2\New.Views.pdb" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Content Update="Areas\Admin\Views\PnsNoEntriCathar\index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\css\bootstrap-c.css">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

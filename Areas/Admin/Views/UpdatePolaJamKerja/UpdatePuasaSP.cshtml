@@ -1,0 +1,62 @@
+﻿@model New.Models.updatepuasaSP
+
+@{
+    ViewData["Title"] = "create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h4>Update Pola Jam Kerja</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdatePuasaSP">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <label class="control-label col-sm-4" type="hidden">NIP</label>
+                <div class="col-sm-8">
+                    <input asp-for="nip" class="form-control"  />
+                    <span asp-validation-for="nip" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-4" type="hidden">Pola Kerja Lama</label>
+                <div class="col-sm-8">
+                    <select asp-for="IdJamKerjaPolaLAMA" class="form-control" asp-items="@ViewBag.PolaJamKerja"></select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label col-sm-4" type="hidden">Valid Sampai</label>
+                <div class="col-sm-8">
+                    <input asp-for="validTill" class="form-control" />
+                    <span asp-validation-for="validTill" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label col-sm-4" type="hidden">Pola Kerja Baru</label>
+                <div class="col-sm-8">
+                    <select asp-for="IdJamKerjaPolaBARU" class="form-control" asp-items="@ViewBag.PolaJamKerja"></select>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label class="control-label col-sm-4" type="hidden">Jenis Update</label>
+                <div class="col-sm-8">
+                    <select asp-for="JenisUpdate" class="form-control" asp-items="@ViewBag.cboJenisUpdate"></select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

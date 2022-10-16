@@ -1,0 +1,125 @@
+﻿@model New.Models.PeriodeNIP
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<br />
+<h4>Apakah anda yakin menghapus data ini?</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+
+        @*<div class="form-group row">
+            <label class="control-label col-sm-3"></label>
+            <div class="col-sm-9">
+                <h5>//Rincian data pegawai</h5>
+            </div>
+        </div>*@
+
+        @*Data Perorangan*@
+        <div class="row">
+            <label class="control-label font-weight-bold  col-sm-3">Periode</label>
+            <div class="col-sm-9 border-bottom">
+                @Html.DisplayFor(model => model.Id.IdPeriode)
+            </div>
+        </div>
+        <div class="row">
+            <label class="control-label font-weight-bold  col-sm-3">Unit</label>
+            <div class="col-sm-9 border-bottom">
+                @Html.DisplayFor(model => model.IdUnitKerjaNavigation.Uraian)
+            </div>
+        </div>
+        <div class="row">
+            <label class="control-label font-weight-bold  col-sm-3"> Nip</label>
+            <div class="col-sm-9 border-bottom">
+                @Html.DisplayFor(model => model.Nip)
+            </div>
+        </div>
+        <div class="row">
+            <label class="control-label font-weight-bold  col-sm-3"> Nama</label>
+            <div class="col-sm-9 border-bottom">
+                @Html.DisplayFor(model => model.NipNavigation.Nama)
+            </div>
+        </div>
+        <div class="row">
+            <label class="control-label font-weight-bold  col-sm-3"> Jabatan</label>
+
+            <div class="col-sm-9 border-bottom">
+                @Html.DisplayFor(model => model.IdJabatanNavigation.Uraian)
+            </div>
+        </div>
+
+        @*Data Atasan*@
+        <br />
+        <div class="row">
+            <label class="control-label font-weight-bold  col-sm-3"></label>
+            <div class="col-sm-9 border-bottom">
+                <h5>>>Atasan Langsung</h5>
+            </div>
+        </div>
+        <div class="row">
+            <label class="control-label font-weight-bold  col-sm-3">Nip</label>
+            <div class="col-sm-9 border-bottom">
+                @Html.DisplayFor(model => model.NipAtas1)
+            </div>
+        </div>
+        <div class="row">
+            <label class="control-label font-weight-bold  col-sm-3">Nama</label>
+            <div class="col-sm-9 border-bottom">
+                @Html.DisplayFor(model => model.NipAtas1Navigation.Nama)
+            </div>
+        </div>
+        <div class="row">
+            <label class="control-label font-weight-bold  col-sm-3">Jabatan</label>
+            <div class="col-sm-9 border-bottom">
+                @Html.DisplayFor(model => model.IdJabatanAtas1Navigation.Uraian)
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <br />
+        <div class="row">
+            <label class="control-label font-weight-bold  col-sm-3"></label>
+            <div class="col-sm-9 border-bottom">
+                <h5>>> Atasan Langsung dari AL</h5>
+            </div>
+        </div>
+        @*Data Atasan dari Atasan Langsung*@
+        <div class="row">
+            <label class="control-label font-weight-bold  col-sm-3">Nip</label>
+            <div class="col-sm-9 border-bottom">
+                @Html.DisplayFor(model => model.NipAtas2)
+            </div>
+        </div>
+        <div class="row">
+            <label class="control-label font-weight-bold  col-sm-3">Nama</label>
+            <div class="col-sm-9 border-bottom">
+                @Html.DisplayFor(model => model.NipAtas2Navigation.Nama)
+            </div>
+        </div>
+        <div class="row">
+            <label class="control-label font-weight-bold  col-sm-3">Jabatan</label>
+            <div class="col-sm-9 border-bottom">
+                @Html.DisplayFor(model => model.IdJabatanAtas2Navigation.Uraian)
+            </div>
+        </div>
+
+
+
+        <form asp-action="Delete">
+            <div class="form-group row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9">
+                    <br />
+                    <input type="submit" asp-route-idPeriode="@Model.IdPeriode"
+                           asp-route-Nip="@Model.Nip" value="Hapus" class="btn btn-danger" />
+                    <a asp-action="Index" class="btn btn-success">Kembali</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

@@ -1,0 +1,45 @@
+﻿@*@if (ViewBag.ErrorMsg != null && ViewBag.ErrorMsg != "")
+{*@
+
+    @*//showMsg();*@
+
+    @*<div class="alert alert-info" role="alert" onclick="showMsg()">*@
+        @*@ViewBag.ErrorMsg*@
+        @*<button class="btn btn-info" onmouseup="showMsg()" />*@
+    @*</div>
+}
+
+<a onplay="showMsg()">a</a>*@
+
+@if (ViewBag.ErrorMsg != null && ViewBag.ErrorMsg != "")
+{
+    <script type="text/javascript">
+
+        //(document).ready(function () {
+
+        //    setTimeout(function () {
+        //        $.bootstrapGrowl("This is another test.", { type: 'success' });
+        //    }, 1000);
+        //});
+        debugger;
+        var msg =  '@ViewBag.ErrorMsg';
+        showMsg();
+
+        function showMsg() {
+
+            //setTimeout(function () {
+            //    $.bootstrapGrowl("Danger, Danger!", {
+            //        type: 'danger',
+            //        align: 'center',
+            //        width: 'auto',
+            //        allow_dismiss: false
+            //    });
+            //}, 2000);
+
+            setTimeout(function () {
+                $.bootstrapGrowl(msg, { type: 'success' });
+            }, 1000);
+        };
+
+    </script>
+}

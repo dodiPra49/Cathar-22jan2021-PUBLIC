@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="08/27/2019 23:37:28" ReportInfo.Modified="08/27/2019 23:43:52" ReportInfo.CreatorVersion="2019.3.23.0">
+  <Styles Name="Standard">
+    <Style Name="Title" Font="Arial, 12pt, style=Bold"/>
+    <Style Name="Header" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Group" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Data" Font="Arial, 10pt"/>
+    <Style Name="Footer" Font="Arial, 10pt"/>
+    <Style Name="EvenRows" Fill.Color="WhiteSmoke" Font="Arial, 10pt"/>
+  </Styles>
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqM3/HbiZANEYP3Y6oNtE7mrUmT0ytl94C6DYS4DXvgc8JqhVjVQGe7Sc2pOMNI3eDegGILRjEcK2LpGewmv/Cp7A/xFjEzjfGAqKlaWhx71ECUp2QX7AEHNi+TgbRaXcbYbsclVLHzkrKWqvzBfIZePpAirP+Rww+JsY0iryfXdodchFRsPJYMRiE58vt+kDa">
+      <TableDataSource Name="Table" DataType="System.Int32" Enabled="true" SelectCommand="EXEC dbo.spCatHar @idperiode, @nip">
+        <Column Name="IdUnitKerja" DataType="System.Int32"/>
+        <Column Name="NMUNIT" DataType="System.String"/>
+        <Column Name="NIP" DataType="System.String"/>
+        <Column Name="Nama" DataType="System.String"/>
+        <Column Name="NIPAL" DataType="System.String"/>
+        <Column Name="NAMAAL" DataType="System.String"/>
+        <Column Name="NIPAAL" DataType="System.String"/>
+        <Column Name="NAMAAAL" DataType="System.String"/>
+        <Column Name="IdJabatan" DataType="System.Int32"/>
+        <Column Name="NMJAB" DataType="System.String"/>
+        <Column Name="IdJabatanAtas1" DataType="System.Int32"/>
+        <Column Name="NMJABAL" DataType="System.String"/>
+        <Column Name="IdJabatanAtas2" DataType="System.Int32"/>
+        <Column Name="NMJABAAL" DataType="System.String"/>
+        <Column Name="IdKaSKPD" DataType="System.String"/>
+        <Column Name="NMKASKPD" DataType="System.String"/>
+        <Column Name="IDKASKPD1" DataType="System.Int32"/>
+        <Column Name="NMJABKASKPD" DataType="System.String"/>
+        <Column Name="IdJamKerjaPola" DataType="System.Int32"/>
+        <Column Name="NMPOLA" DataType="System.String"/>
+        <Column Name="IDPERIODE" DataType="System.String"/>
+        <Column Name="AJUKAN1" DataType="System.DateTime"/>
+        <Column Name="AJUKAN2" DataType="System.DateTime"/>
+        <Column Name="SELESAI" DataType="System.DateTime"/>
+        <Column Name="HKYbs" DataType="System.Int32"/>
+        <Column Name="DurasiYbs" DataType="System.Int32"/>
+        <Column Name="DurasiCatHar" DataType="System.Int32"/>
+        <Column Name="DurasiAL" DataType="System.Int32"/>
+        <Column Name="DurasiAAL" DataType="System.Int32"/>
+        <Column Name="TANGGAL" DataType="System.DateTime"/>
+        <Column Name="WaktuMulai" DataType="System.TimeSpan"/>
+        <Column Name="WaktuHingga" DataType="System.TimeSpan"/>
+        <Column Name="Aktifitas" DataType="System.String"/>
+        <Column Name="Tempat" DataType="System.String"/>
+        <Column Name="Hasil" DataType="System.String"/>
+        <Column Name="WaktuSetuju1" DataType="System.Int32"/>
+        <Column Name="WaktuSetuju2" DataType="System.Int32"/>
+        <CommandParameter Name="@idperiode" DataType="22" Expression="[idperiode]" DefaultValue="a"/>
+        <CommandParameter Name="@nip" DataType="22" Expression="[nip]" DefaultValue="a"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+    <Parameter Name="idperiode" DataType="System.String" Expression="&quot;2019.05&quot;"/>
+    <Parameter Name="nip" DataType="System.Int64" Expression="197308172000031008"/>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="37.8">
+      <TextObject Name="Text1" Width="718.2" Height="37.8" Dock="Fill" Text="Table" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold" Style="Title"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="41.8" Width="718.2" Height="28.35">
+      <TextObject Name="Text3" Width="151.2" Height="18.9" Text="IdUnitKerja" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text5" Left="151.2" Width="141.75" Height="18.9" Text="NMUNIT" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text7" Left="292.95" Width="141.75" Height="18.9" Text="NIP" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text9" Left="434.7" Width="141.75" Height="18.9" Text="Nama" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text11" Left="576.45" Width="141.75" Height="18.9" Text="NIPAL" Font="Arial, 10pt, style=Bold" Style="Header"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="74.15" Width="718.2" Height="18.9" EvenStyle="EvenRows" DataSource="Table">
+      <TextObject Name="Text2" Width="151.2" Height="18.9" Text="[Table.IdUnitKerja]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text4" Left="151.2" Width="141.75" Height="18.9" Text="[Table.NMUNIT]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text6" Left="292.95" Width="141.75" Height="18.9" Text="[Table.NIP]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text8" Left="434.7" Width="141.75" Height="18.9" Text="[Table.Nama]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text10" Left="576.45" Width="141.75" Height="18.9" Text="[Table.NIPAL]" Font="Arial, 10pt" Style="Data"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="97.05" Width="718.2" Height="18.9">
+      <TextObject Name="Text12" Width="718.2" Height="18.9" Dock="Fill" Text="[PageN]" HorzAlign="Right" Font="Arial, 10pt" Style="Footer"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

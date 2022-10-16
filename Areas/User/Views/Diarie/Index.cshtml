@@ -1,0 +1,352 @@
+﻿@model New.Models.Diary
+
+@using New.Utility
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .button1 {
+        border-radius: 2px;
+    }
+
+    .button2 {
+        border-radius: 4px;
+    }
+
+    .button3 {
+        border-radius: 8px;
+    }
+
+    .button4 {
+        border-radius: 12px;
+    }
+
+    .button5 {
+        border-radius: 50%;
+    }
+</style>
+
+<br />
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="IndexSave">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<input asp-for="IdPeriode" type="hidden" />*@
+            @*<input asp-for="Nip" type="hidden" />*@
+            @*<input asp-for="Tanggal" />*@
+            @*<input asp-for="Id" type="hidden" />*@
+
+            @*<div>
+                    <label class="control-label ">Periode : [@Model.IdPeriode]</label>
+                    <label class="control-label ">Nip : [@Model.Nip]</label>
+                    <label class="control-label ">Tanggal : [@Model.Tanggal]</label>
+                </div>*@
+            <div class="form-group row">
+                <label class="control-label col-sm-2"></label>
+                <h5>Pengisian Data Aktifitas </h5>
+
+            </div>
+
+            @*Tampilkan form Modal set Periode tanggal
+                <div class="form-group row">
+                    <label class="control-label col-sm-4">
+                        <button id="btnShowModal" type="button"
+                                class="btn btn-sm btn-default pull-left col-lg-11 button button4">
+                            Periode/Tanggal xxx
+                        </button>
+                    </label>
+                </div>
+            *@
+
+
+
+            <div class="form-group row">
+                <label class="control-label col-sm-2">Nip/Id</label>
+                <input asp-for="Nip" readonly class="form-control col-sm-4" />
+                <span asp-validation-for="Tanggal" class="text-danger"></span>
+                @*
+                       &nbsp;
+                    <input asp-for="Id" readonly class="form-control col-sm-1" />
+                    <span asp-validation-for="IdPeriode" class="text-danger"></span>
+                    <span>
+
+                *@
+                <button id="btnShowModal" type="button"
+                        class="btn btn-primary">
+                    Set Periode
+
+                    </span>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label col-sm-2">Tanggal</label>
+                <input asp-for="Tanggal" readonly class="form-control col-sm-4" id="tanggal" onfocus="window.location.reload(true)" />
+                <span asp-validation-for="Tanggal" class="text-danger"></span>
+                &nbsp;
+                <input asp-for="IdPeriode" readonly class="form-control col-sm-4" />
+                <span asp-validation-for="IdPeriode" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label col-sm-2">Waktu</label>
+                <input asp-for="WaktuMulai" id="waktuMulai" class="form-control col-sm-4" />
+                <span asp-validation-for="WaktuMulai" class="text-danger"></span>
+                &nbsp;
+                <input asp-for="WaktuHingga" class="form-control col-sm-4" />
+                <span asp-validation-for="WaktuHingga" class="text-danger"></span>
+                <a href='#' class="linkRapat  btn btn-primary" title="Daftar Rapat"><i class="fa fa-chalkboard-teacher"></i></a>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label col-sm-2">Aktifitas</label>
+                <textarea asp-for="Aktifitas" class="control-label col-sm-10" rows="3"></textarea>
+                <span asp-validation-for="Aktifitas" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Tempat" class="control-label col-sm-2"></label>
+                <textarea asp-for="Tempat" class="form-control col-sm-10" rows="1"></textarea>
+                <span asp-validation-for="Tempat" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Hasil" class="control-label col-sm-2"></label>
+                <textarea asp-for="Hasil" class="form-control col-sm-10" rows="2"></textarea>
+                <span asp-validation-for="Hasil" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label col-sm-2"></label>
+                <input type="submit" value="Simpan" id="Pilihan" name="Pilihan" class="btn btn-primary" />
+                @*<input type="submit" value="Simpan" id="Pilihan" name="Pilihan" class="btn btn-primary" />*@
+                &nbsp;
+                @if (@Model.Id != 0)
+                {
+                    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">
+                        Delete
+                    </a>
+
+                }
+
+                <a asp-action="Ajukan" asp-route-idperiode="@Model.IdPeriode"
+                   asp-route-nip="@Model.Nip"
+                   class="btn btn-success">
+
+                    Ajukan Ke Atasan Langsung
+                </a>
+                &nbsp;
+                <a class='btn  btn-warning' asp-action="Print"><i class="fa fa-print"></i></a>
+                &nbsp;
+                <a class="btn btn-danger" asp-action="Pdf"><i class="fa fa-file-pdf"></i></a>
+            </div>
+        </form>
+
+        @*   Form Modal Set Periode Tanggal   *@
+        <div class="modal fade" tabindex="-1" id="setPeriodeModal"
+             data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog modal-sm-12">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                        </button>
+                        <h5 class="modal-title">Pilih Periode/Tanggal</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+
+                            <div class="form-group row">
+                                <label class="control-label  col-sm-2">Periode : </label>
+                                <div class="col-sm-4">
+                                    <select id="_idPeriode" name="idPeriode" class="form-control" asp-items="ViewBag.DaftarPeriode" asp-for="IdPeriode"></select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="control-label  col-sm-2">Tanggal Periode : </label>
+                                <div class="col-sm-5">
+                                    <input type="date" id="_tanggal" name="tanggal" asp-for="@Model" class="form-control " />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="control-label col-sm-1"></label>
+                                <div class="col-sm-4">
+                                    <input type="submit" value="Simpan" name="btn" class="btn btn-primary" onclick="return setPeriodeTanggal();" />
+                                    <a asp-action="Index" asp-controller="Diarie" asp-area="SuperAdmin" class="btn btn-danger">
+                                        Batal
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        @* END--  Form Modal Set Periode Tanggal *@
+
+    </div>
+
+    <div class="col-md-1">
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group row">
+
+            <div id="myModal">
+                <div class="justify-content-center" id="ListAct">
+
+                </div>
+
+                <div class="justify-content-center" id="ListRapat">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <marquee behavior="scroll" direction="left">Klik Set Periode untuk ubah periode,Klik textbox tanggal jika belum berubah </marquee>
+</div>
+
+
+        @section scripts
+{
+            <script type="text/javascript">
+                $(document).ready(function () {
+
+                   //debugger
+                   //$('#waktuMulai').focus();
+                    CallFunction();
+                   
+               
+                           
+                   function reload_halaman()
+                    {
+                       location.reload(true);
+                       return ;
+                    }
+
+
+
+                    $("#btn_refresh").click(function () {
+                        reload_halaman();
+                    }  );
+                        
+                                              
+                            
+                    $("#btnShowModal").click(function () {
+                        $("#setPeriodeModal").modal('show');
+                    });
+
+                    $("#btnHideModal").click(function () {
+                        $("#loginModal").modal('hide');
+                    });
+
+                    $(".linkRapat").click(function () {
+                        //  alert(" tombol rapat ditekan");
+                        callRapat();
+                    });
+                });
+            
+                function setPeriodeTanggal()
+                {
+                    var empObj = {
+                                    id: $('#_idPeriode').val(),
+                                    tanggal: $('#_tanggal').val(),
+                    };
+
+                   // alert("fungsi setperiodetanggal:: sebelum masuk ajax");
+                       
+                        $.ajax({
+                            url: "/User/Diarie/indexModal",
+                            data: JSON.stringify(empObj),
+                            type: "POST",
+                            contentType: "application/json;charset=utf-8",
+                            dataType: "json",
+                            success: function (result)
+                            {
+                                $('#tanggal').focus();
+                                CallFunction();
+                             
+                          
+                                
+                         
+                                                                             
+                            },
+                            error: function (errormessage) {
+                               alert("Didalam fungsi SePeriode tanggal(GAGAL)");
+                                 alert(errormessage.responseText);
+                            }
+                        });
+                    return;
+                    }
+
+                function callRapat()
+                {
+                    var PostBackURL = '/User/Diarie/GetListRapat/';
+                    $.ajax({
+                        type: "GET",
+                        url: PostBackURL,
+                        contentType: "application/json; charset=utf-8",
+                        //data: { "Id": id },
+                        cache: false,
+                        datatyype: "json",
+                        success: function (data) {
+                            $('#ListRapat').html(data);
+                            $('#ListAct').hide();
+
+                            //$('#myModal').modal('show');
+                            // $('#myModalContent').html(data);
+                            //$('#myModal').modal('show');
+                        }
+                        ,
+                        error: function () {
+                            alert("Data rapat masih kosong");
+                        }
+                    });
+                }
+
+                function CallFunction()
+                {
+                  //  reload_halaman();
+                    var PostBackURL = '/User/Diarie/GetListAct/';
+                    $.ajax({
+                        type: "GET",
+                        url: PostBackURL,
+                        contentType: "application/json; charset=utf-8",
+                        //data: { "Id": id },
+                        cache: false,
+                        datatyype: "json",
+                        success: function (data) {
+                            $('#ListAct').html(data);
+                           //  $('#tanggal').focus();
+                              
+                          
+                            
+                            //$('#myModal').modal('show');
+                            // $('#myModalContent').html(data);
+                            //$('#myModal').modal('show');
+                        }
+                        ,
+                        error: function () {
+                            alert("Dynamic content load failed");
+                        }
+                    });
+                    return true;
+                }
+                                         
+            </script>
+        }
+

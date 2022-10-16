@@ -1,0 +1,90 @@
+﻿@model PagedResult<New.Models.ApplicationUser>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@{
+    var urlTemplate = Url.Action() + "?page={0}";
+    var request = ViewContext.HttpContext.Request;
+    foreach (var key in request.Query.Keys)
+    {
+        if (key == "page")
+        {
+            continue;
+        }
+
+        urlTemplate += "&" + key + "=" + request.Query[key];
+    }
+
+    var startIndex = Math.Max(Model.CurrentPage - 5, 1);
+    var finishIndex = Math.Min(Model.CurrentPage + 5, Model.PageCount);
+}
+
+<br />
+@using (Html.BeginForm("Index", "UserEdit", FormMethod.Get))
+{
+    <div class="col-12">
+        <div class="row">
+            <div class="col-sm-8">
+                <h4>Daftar User </h4>
+            </div>
+            <div class="col-sm-4">
+                <div class="nav justify-content-end">
+                    <input id="Cari" type="text" class="form-control"
+                           name="searchString" placeholder="Searching ..."
+                           value="@ViewBag.searchString">
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NipParm"]" asp-route-searchString=".," >NIP</a>
+            </th>
+            <th>
+                <a asp-area="SuperAdmin" asp-action="Index" asp-route-sortOrder="@ViewData["NamaParm"]" asp-route-searchString=".," >Nama</a>
+            </th>
+            <th>
+                Unit Kerja
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Results)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NIP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitKerja)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.NIP">Edit</a> |
+                @*<a asp-action="Details" asp-route-id="@item.NIP">Details</a> |*@
+                <a asp-action="Delete" asp-route-id="@item.NIP">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@(await Component.InvokeAsync<PagerViewComponent>(Model))

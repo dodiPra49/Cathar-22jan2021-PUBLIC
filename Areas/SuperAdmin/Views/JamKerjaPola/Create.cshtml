@@ -1,0 +1,54 @@
+﻿@model New.Models.JamKerjaPola
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h4 class="col-9">Tambah Jam Kerja Pola</h4>
+<hr />
+
+<div class="col-6">
+    <form asp-action="Create">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        @*<div class="form-group row">
+            <label class="control-label col-sm-3"></label>
+            <h5 class="col-9">//Jam Kerja Pola .(edit)</h5>
+            <span asp-validation-for="Uraian" class="text-danger"></span>
+        </div>*@
+
+        <div class="form-group row">
+            <label asp-for="Id" class="control-label col-sm-3"></label>
+            <input asp-for="Id" class="form-control col-sm-9"  />
+            <span asp-validation-for="Id" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="Uraian" class="control-label col-sm-3"></label>
+            <input asp-for="Uraian" class="form-control col-sm-9" />
+            <span asp-validation-for="Uraian" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="ValidTill" class="control-label col-sm-3"></label>
+            <input asp-for="ValidTill" class="form-control col-sm-9" />
+            <span asp-validation-for="ValidTill" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-sm-3"></label>
+            <input type="submit" value="Simpan" class="form-control col-sm-2 btn btn-primary" />
+            &nbsp;
+            <a class="btn btn-success  col-sm-2" asp-action="Index">Kembali</a>
+        </div>
+
+
+    </form>
+
+
+
+
+</div>

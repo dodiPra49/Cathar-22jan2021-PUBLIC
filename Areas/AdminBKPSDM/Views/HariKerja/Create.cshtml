@@ -1,0 +1,42 @@
+﻿@model New.Models.HariKerja
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<form asp-action="Create">
+
+    <div class="form-group row">
+        <label class="control-label col-sm-1"> </label>
+        <div class="col-sm-4">
+            <h5>//ENTRY HARI KERJA</h5>
+        </div>
+    </div>
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group row">
+        <label asp-for="Tanggal" class="control-label  col-sm-1"></label>
+        <div class="col-sm-4">
+            <input asp-for="Tanggal" class="form-control" />
+            <span asp-validation-for="Tanggal" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="IdLibur" class="control-label  col-sm-1"></label>
+        <div class="col-sm-4">
+            <select asp-for="IdLibur" class="form-control" asp-items="ViewBag.IdLibur"></select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-1"></label>
+        <div class="col-sm-4">
+            <input type="submit" value="Create" class="btn btn-primary  " />
+            <a asp-action="Index" class="btn btn-info btn">Back to List</a>
+        </div>
+    </div>
+</form>
+
+ 
+

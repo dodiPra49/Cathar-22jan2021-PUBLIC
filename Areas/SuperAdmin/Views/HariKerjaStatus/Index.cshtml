@@ -1,0 +1,91 @@
+﻿@model PagedResult<New.Models.HariKerjaStatus>
+@using New.Models;
+@{
+    ViewData["Title"] = "Index";
+}
+
+@{
+    var urlTemplate = Url.Action() + "?page={0}";
+    var request = ViewContext.HttpContext.Request;
+    foreach (var key in request.Query.Keys)
+    {
+        if (key == "page")
+        {
+            continue;
+        }
+
+        urlTemplate += "&" + key + "=" + request.Query[key];
+    }
+
+    var startIndex = Math.Max(Model.CurrentPage - 5, 1);
+    var finishIndex = Math.Min(Model.CurrentPage + 5, Model.PageCount);
+}
+
+</br>
+
+@using (Html.BeginForm("Index", "HariKerjaStatus", FormMethod.Get))
+{
+    <div class="col-12">
+        <div class="row">
+            <div class="col-sm-8">
+                <h4>Daftar Status Hari Kerja </h4>
+            </div>
+            <div class="col-sm-4">
+                <div class="nav justify-content-end">
+                    <input id="Cari" type="text" class="form-control"
+                           name="searchString" placeholder="Searching ...">
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="col-12">
+    </br>
+    <table class="table table-striped table-sm table-bordered">
+        <thead class="thead-light">
+
+            <tr>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["IdParm"]">ID</a>
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["UraianParm"]">URAIAN</a>
+                </th>
+                <th>
+                    <div style="color:#007bff">LIBUR</div>
+                </th>
+                <th>
+                    <div class="nav justify-content-end">
+                        <a class='btn btn-primary' asp-action="Create"><i class="fa fa-plus"></i></a>
+                        &nbsp;
+                        <a class='btn btn-warning' asp-action="Print"><i class="fa fa-print"></i></a>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Results)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Uraian)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Libur)
+                    </td>
+                    <td>
+                        <div class="nav justify-content-end">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                            &nbsp;
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

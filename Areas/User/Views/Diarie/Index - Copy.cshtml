@@ -1,0 +1,84 @@
+﻿@model IEnumerable<New.Models.Diary>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tanggal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WaktuMulai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WaktuHingga)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aktifitas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tempat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WaktuSetuju1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WaktuSetuju2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PeriodeNIP)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tanggal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WaktuMulai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WaktuHingga)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aktifitas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tempat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WaktuSetuju1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WaktuSetuju2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PeriodeNIP.IdPeriode)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

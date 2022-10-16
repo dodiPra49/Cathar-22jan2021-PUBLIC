@@ -1,0 +1,211 @@
+﻿@model New.Models.HariKerjaNip
+
+@{
+    ViewData["Title"] = "Hari Kerja NIP";
+}
+<input id="idperiode" value="@ViewBag.IdPeriode" type="hidden" />
+<input id="idunit" value="@ViewBag.IdUnit" type="hidden" />
+<input id="idnip" value="@ViewBag.IdNip" onchange="CallFunctionTglNip()" type="hidden" />
+<input id="idpola" value="@ViewBag.IdPola" type="hidden" />
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group row">
+            <div id="myModal">
+                <div class="justify-content-center pagination" id="ListPegawai">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4 ">
+        <div class="justify-content-4center pagination" id="ListHarian">
+            div_list_harian
+        </div>
+
+
+    </div>
+
+    <br />
+    <div class="col-sm-4">
+        <div class="justify" >
+            <h7><b>STATUS HARI KERJA</b></h7>
+            <table class="table  table-sm small border border-danger" width="100%">
+                <form asp-action="CRUD">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2">Periode</label>
+                        <div class="col-form-label col-sm-1 text-sm-right">:</div>
+                  
+                         <input asp-for="IdPeriode" id="id-periode" class="form-control col-sm-7" readonly />
+                        </div>
+                      
+                      
+                    </div>
+                    <div class="form-group row">
+                        <label  class="col-form-label col-sm-2">NIP</label>
+                        <div class="col-form-label col-sm-1 text-sm-right">:</div>
+                        @*<input asp-for="NIP" onchange="SetNamaPeg(this.value, 'namaPeg')" class="form-control col-sm-9" />*@
+                        <input asp-for="NIP" class="form-control col-sm-7" readonly />
+
+                        <span asp-validation-for="NIP" class="text-danger"></span>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2">Nama</label>
+                        <div class="col-form-label col-sm-1 text-sm-right">:</div>
+                        <input id="namaPeg" name="namaPeg" class="form-control col-sm-7" readonly />
+
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2">Tanggal</label>
+                        <div class="col-form-label col-sm-1 text-sm-right">:</div>
+                        <input asp-for="Tanggal" class="form-control col-sm-7" readonly />
+
+                        <span asp-validation-for="Tanggal" class="text-danger"></span>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2">Status</label>
+                        <div class="col-form-label col-sm-1 text-sm-right">:</div>
+                        <select asp-for="IdHariKerjaStatus" class="form-control col-sm-7" asp-items="ViewBag.IdHariKerjaStatus">
+                        </select>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-sm-3"></label>
+                        <input name="tombol" type="submit" value="Simpan" class="btn btn-primary" />&nbsp;
+                        <input name="tombol" type="submit" value="Delete" class="btn btn-danger" />
+                        @*<a asp-action="Delete" class="btn btn-info col-sm-3">Delete</a>*@
+
+                    </div>
+                </form>
+            </table>
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+@*<img id="img" src="https://en.js.cx/clipart/train.gif?speed=1&cache=0">*@
+
+
+@section scripts
+{
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //sleep
+            debugger;
+
+            CallFunctionPeriodeNip();
+            CallFunctionTglNip();
+
+           // alert('paginasi belum jalan (index.cshtml)');
+           // $('#listPegawai').DataTable();
+
+        });
+
+
+        function CallFunctionPeriodeNip()
+        {
+            debugger;
+            var idPeriode = document.getElementById("idperiode").value;
+            var idUnit = document.getElementById("idunit").value;
+
+            var PostBackURL = '/Admin/HariKerjaNip/GetPegawaiList/';
+
+            $.ajax({
+                type: "GET",
+                url: PostBackURL,
+                contentType: "application/json; charset=utf-8",
+                data: {
+                    "idperiode": idPeriode,
+                    "idunit": idUnit
+                },
+                cache: false,
+                datatyype: "json",
+                success: function (data) {
+                    $('#ListPegawai').html(data);
+                    $('#pegawai').DataTable(
+                           {
+                            "searching":false,
+                            "ordering": false,
+                            "info": false,
+                            "bLengthChange":false
+                       }
+                    );
+
+                }
+                ,
+                error: function () {
+                    alert("Data Pegawai Kosong");
+                }
+            });
+        }
+
+        // Menanpilkan daftar tanggal hari kerja nip
+        function CallFunctionTglNip()
+        {
+
+            var idPeriode = document.getElementById("idperiode").value;
+            var idnip = document.getElementById("idnip").value;
+            var PostBackURL = '/Admin/HariKerjaNip/GetPegawaiTglList/';
+
+            $.ajax({
+                type: "GET",
+                url: PostBackURL,
+                contentType: "application/json; charset=utf-8",
+                data: {
+                    "idperiode": idPeriode,
+                    "nip": idnip
+                },
+                cache: false,
+                datatyype: "json",
+                success: function (data) {
+                    $('#ListHarian').html(data);
+                    $('#periodeTGL').DataTable(
+                        {
+                            "searching":false,
+                            "ordering": false,
+                            "info": false,
+                             "bLengthChange":false
+                       }
+                    );
+
+                }
+                ,
+                error: function () {
+                    alert("Data Hari Kerja Kosong");
+                }
+            });
+            SetNamaPeg(idnip, 'namaPeg');
+
+        }
+
+        //function SetNamaPeg(id, el) {
+
+
+        function SetNamaPeg(id, el)
+        {
+            //debugger;
+
+            var s = document.getElementById(el);
+            //alert(id);
+            $.ajax({
+                url: '/Admin/HariKerjaNip/GetNamaPeg/' + id,
+                type: 'GET',
+                dataType: 'text',
+                success: function (data) {
+                    s.value = JSON.parse(data);
+                }
+            });
+        }
+
+    </script>
+}
+

@@ -1,0 +1,38 @@
+﻿@model New.Models.NoCatharBKPSDM
+
+@{ 
+      ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+  
+<h2><center>Daftar Unit Kerja  </center></h2>
+<br />
+     
+            <div class="row">
+           
+                    <form asp-action="ListPnsNoCathar" method="get">
+                        <div class="form-group row ">
+                         
+                                <label class="control-label col-sm-1" type="hidden"><b>Periode </b></label>
+                                <div class="col-sm-2">
+                                    <input asp-for="Periode" class="form-control" />
+
+                                </div>
+                                <label class="control-label col-sm-1" type="hidden"><b>Unit Kerja</b></label>
+                                <div class="col-sm-2">
+                                  
+                                    <select type="text" id="Pilihan" asp-for="Id" value="@ViewBag.IdUnitKerja"
+                                            onchange="this.form.submit()"
+                                            class="form-control small" asp-items="ViewBag.ListUnitKerja">
+                                    </select>
+                                </div>
+                           
+
+                        </div>
+                                    
+                                
+</form>
+                 </div>
+             </div>
+

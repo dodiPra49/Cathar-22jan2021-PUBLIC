@@ -1,0 +1,58 @@
+﻿@model New.Models.Periode
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var bulanid = Model.Bulan;
+}
+
+<h4>Ubah Periode</h4>
+<hr />
+
+<form asp-action="Edit">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group row">
+        <label class="control-label col-sm-2">Id Periode</label>
+        <input class="form-control col-sm-4" asp-for="Id" readonly />
+    </div>
+
+
+    <div class="form-group row">
+        <label class="control-label col-sm-2">Tahun</label>
+
+        <input asp-for="Tahun" class="form-control col-sm-4" />
+        <span asp-validation-for="Tahun" class="text-danger"></span>
+
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2">Bulan</label>
+
+        <input asp-for="Bulan"
+               onchange="setbulan(this.value, @bulanid)"
+               class="form-control col-sm-4" />
+        <span asp-validation-for="Bulan" class="text-danger"></span>
+
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2"></label>
+
+        <input type="submit" value="Simpan" class="btn btn-primary" />&nbsp;
+        <a class="btn btn-success" asp-action="Index">Kembali</a> &nbsp;
+        @*<a class="btn btn-success" asp-action="Simpan" asp-route-id="@bulanid">Simpan</a>*@
+
+    </div>
+</form>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        function setbulan(getb, setb) {
+            debugger;
+            setb = getb;
+
+
+        }
+    </script>
+    }

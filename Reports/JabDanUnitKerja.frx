@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="06/19/2019 17:29:03" ReportInfo.Modified="06/24/2019 19:19:32" ReportInfo.CreatorVersion="2019.3.0.0">
+  <Styles Name="Standard">
+    <Style Name="Title" Font="Arial, 12pt, style=Bold"/>
+    <Style Name="Header" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Group" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Data" Font="Arial, 10pt"/>
+    <Style Name="Footer" Font="Arial, 10pt"/>
+    <Style Name="EvenRows" Fill.Color="WhiteSmoke" Font="Arial, 10pt"/>
+  </Styles>
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqM7gJFg/iaLrqMhRfGy5lGsK6BFia5/nZvzc2yl7zuFUHcxOIKIsdJ7dugNT4CPmSJiShvfsNbO29LvdTXVJQwg4wnT5H2edDqkqS3DUM0MI0MIvozEZu9YLB7qMk6GvBd3kwVq0LuOhI1zvhRJRgsxAH0Xa09aVkBxvUfUap6YWjqJKjwVKledi2fLrTF9QVI0tlb/Cak7jxt4xKcdMOpQ==">
+      <TableDataSource Name="Table" Alias="JabAndUnitkerja" DataType="System.Int32" Enabled="true" SelectCommand="EXEC JabAndUnitkerja @IdUnitKerja">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="IdUnitKerja" DataType="System.Int32"/>
+        <Column Name="Uraian" DataType="System.String"/>
+        <Column Name="IdEselon" DataType="System.Int32"/>
+        <Column Name="Urut" DataType="System.Int32"/>
+        <Column Name="IdJabatan" DataType="System.Int32"/>
+        <Column Name="IdAtas" DataType="System.Int32"/>
+        <Column Name="Id1" DataType="System.Int32"/>
+        <Column Name="UnitKerja" DataType="System.String"/>
+        <Column Name="IdLevel" DataType="System.Int32"/>
+        <CommandParameter Name="IdUnitKerja" DataType="22" DefaultValue="0"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="37.8">
+      <TextObject Name="Text1" Width="718.2" Height="37.8" Dock="Fill" Text="Jabatan Unit Kerja" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold" Style="Title"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="41.8" Width="718.2" Height="28.35">
+      <TextObject Name="Text3" Width="75.6" Height="18.9" Text="Id" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text5" Left="75.6" Width="75.6" Height="18.9" Text="IdUnitKerja" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text7" Left="151.2" Width="75.6" Height="18.9" Text="Uraian" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text9" Left="226.8" Width="75.6" Height="18.9" Text="IdEselon" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text11" Left="302.4" Width="75.6" Height="18.9" Text="Urut" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text13" Left="378" Width="75.6" Height="18.9" Text="IdJabatan" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text15" Left="453.6" Width="66.15" Height="18.9" Text="IdAtas" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text17" Left="519.75" Width="66.15" Height="18.9" Text="Id1" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text19" Left="585.9" Width="66.15" Height="18.9" Text="UnitKerja" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text21" Left="652.05" Width="66.15" Height="18.9" Text="IdLevel" Font="Arial, 10pt, style=Bold" Style="Header"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="74.15" Width="718.2" Height="18.9" EvenStyle="EvenRows" DataSource="Table">
+      <TextObject Name="Text2" Width="75.6" Height="18.9" Text="[JabAndUnitkerja.Id]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text4" Left="75.6" Width="75.6" Height="18.9" Text="[JabAndUnitkerja.IdUnitKerja]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text6" Left="151.2" Width="75.6" Height="18.9" Text="[JabAndUnitkerja.Uraian]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text8" Left="226.8" Width="75.6" Height="18.9" Text="[JabAndUnitkerja.IdEselon]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text10" Left="302.4" Width="75.6" Height="18.9" Text="[JabAndUnitkerja.Urut]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text12" Left="378" Width="75.6" Height="18.9" Text="[JabAndUnitkerja.IdJabatan]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text14" Left="453.6" Width="66.15" Height="18.9" Text="[JabAndUnitkerja.IdAtas]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text16" Left="519.75" Width="66.15" Height="18.9" Text="[JabAndUnitkerja.Id1]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text18" Left="585.9" Width="66.15" Height="18.9" Text="[JabAndUnitkerja.UnitKerja]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text20" Left="652.05" Width="66.15" Height="18.9" Text="[JabAndUnitkerja.IdLevel]" Font="Arial, 10pt" Style="Data"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="97.05" Width="718.2" Height="18.9">
+      <TextObject Name="Text22" Width="718.2" Height="18.9" Dock="Fill" Text="[PageN]" HorzAlign="Right" Font="Arial, 10pt" Style="Footer"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

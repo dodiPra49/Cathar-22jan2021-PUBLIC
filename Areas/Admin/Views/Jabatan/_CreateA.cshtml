@@ -1,0 +1,86 @@
+﻿@model New.Models.Jabatan
+
+@{
+
+    ViewBag.IdUnitKerja = ViewData["IdUnitKerja"];
+    ViewBag.SubDiv = ViewData["SubDiv"];
+    ViewBag.ErrorMsg = ViewData["ErrorMsg"];
+}
+
+@*@ViewBag.ErrorMsg*@
+
+
+    <form asp-action="Create">
+        @*@Html.Hidden("returnUrl", this.R.req.Request.RawUrl)*@
+        <input type="hidden" asp-for="Urut" />
+        <input type="hidden" asp-for="IdJabatan" value="0" />
+        <input type="hidden" nama="IdDiv" value="@ViewBag.SubDiv" />
+        <input type="hidden" asp-for="IdUnitKerja" value="@ViewBag.IdUnitKerja" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group row">
+            <label class="control-label col-sm-1"> </label>
+            <div class="col-sm-4">
+                <h5>ENTRY JABATAN</h5>
+            </div>
+        </div>
+
+        @*@ViewBag.ErrorMsg*@
+        @*@if (ViewBag.ErrorMsg != null || ViewBag.ErrorMsg != "")
+        {*@
+
+        <partial name="~/Views/Shared/_StatusMessage.cshtml" view-data="ViewData[ViewBag.ErrorMsg]" />
+
+        @*}*@
+
+        <div class="form-group row">
+            <label class="control-label col-sm-1">Id</label>
+            <div class="col-sm-4">
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Uraian" class="control-label col-sm-1"></label>
+            <div class="col-sm-4">
+                <input asp-for="Uraian" class="form-control" />
+                <span asp-validation-for="Uraian" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-sm-1">Eselon</label>
+            <div class="col-sm-4">
+                <input asp-for="IdEselon" class="form-control" />
+                <span asp-validation-for="IdEselon" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-sm-1">Nip Atas</label>
+            <div class="col-sm-4">
+                <input asp-for="IdAtas" class="form-control" />
+                <span asp-validation-for="IdAtas" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-sm-1">Berlaku Sampai</label>
+            <div class="col-sm-4">
+                <input asp-for="ValidTill" class="form-control" />
+                <span asp-validation-for="ValidTill" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-sm-1"></label>
+            <div class="col-sm-4">
+                <input type="submit" value="Simpan" class="btn btn-primary btn-sm" />
+                <a asp-action="Index"
+                   asp-route-IdUnitKerja="@ViewBag.IdUnitKerja"
+                   asp-route-SubDiv="1"
+                   asp-route-IdJabatan="0" class="btn btn-success btn-sm">
+                    Kembali
+                </a>
+            </div>
+        </div>
+    </form>
+
+

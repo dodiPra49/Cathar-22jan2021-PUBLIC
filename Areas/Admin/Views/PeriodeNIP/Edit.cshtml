@@ -1,0 +1,225 @@
+﻿@model New.Models.PeriodeNIP
+@using  New.Utility
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<br />
+<h4>Ubah Periode NIP</h4>
+<hr />
+
+@if (ViewBag.ErrorReffLink != null)
+{
+    if (ViewBag.ErrorReffLink != "")
+    {
+        <div class="alert alert-info">
+            <p>@ViewBag.ErrorReffLink</p>
+        </div>
+    }
+}
+<form asp-action="Edit">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<input asp-for="NipNavigation.Nama" value="@SD.IdPeriode" type="hidden" />*@
+            <input asp-for="IdPeriode" type="hidden" />
+            @*<input asp-for="IdUnitKerja" type="hidden" />*@
+            <input id="IdJabatanAtas1" asp-for="IdJabatanAtas1" type="hidden" />
+            <input id="IdJabatanAtas2" asp-for="IdJabatanAtas2" type="hidden" />
+
+            @*<div class="form-group row">
+            <label class="control-label col-sm-3"></label>
+            <div class="col-sm-9">
+                <h5>//Edit Periode NIP</h5>
+            </div>
+        </div>*@
+
+            <div class="form-group row">
+                <label class="control-label col-sm-3">Nip</label>
+                <div class="col-sm-9">
+                    <input id="Nip" type="text" asp-for="Nip"
+                           onchange="SetNmByNip(this.value, 'namaPeg')"
+                           class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-3" type="hidden"> Nama Peg</label>
+                <div class="col-sm-9">
+                    <input asp-for="NipNavigation.Nama" type="text" name="namaPeg" id="namaPeg" readonly class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label col-sm-3">Jabatan</label>
+                <div class="col-sm-9">
+                    <select asp-for="IdJabatan" class="form-control selectpicker"
+                            data-live-search="true"
+                            onchange="SetIdJabAtas(this.value, 'IdJabatanAtas1','IdJabatanAtas2')"
+                            asp-items="ViewBag.IdJabatan"></select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label col-sm-3">Pola Jam Kerja</label>
+                <div class="col-sm-9">
+                    <select asp-for="IdJamKerjaPola" class="form-control selectpicker"
+                            data-live-search="true"
+                            asp-items="ViewBag.IdJamKerjaPola"></select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label col-sm-3" type="hidden">SKPD Baru</label>
+                <div class="col-sm-9">
+                    <select asp-for="IdUnitKerja" class="form-control" asp-items="ViewBag.NamaSkpd"></select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label col-sm-3"></label>
+                <div class="col-sm-9">
+                    <h5>Atasan Langsung</h5>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label col-sm-3">Nip</label>
+                <div class="col-sm-9">
+                    <input id="NipAtas1" type="text" asp-for="NipAtas1"
+                           onchange="SetNmByNip(this.value, 'namaAtas1')"
+                           class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-3">Nama</label>
+                <div class="col-sm-9">
+                    <input asp-for="@Model.NipAtas1Navigation.Nama" type="text" name="namaAtas1" id="namaAtas1" readonly class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-3">Jabatan</label>
+                <div class="col-sm-9">
+                    <input type="text" asp-for="IdJabatanAtas1Navigation.Uraian" name="namaJab1" id="namaJab1" readonly class="form-control" />
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-md-6">
+
+            <div class="form-group row">
+                <label class="control-label col-sm-3"></label>
+                <div class="col-sm-9">
+                    <h5>Atasan Langsung dari Atasan Langsung</h5>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-3">Nip</label>
+                <div class="col-sm-9">
+                    <input id="NipAtas2" type="text" asp-for="NipAtas2"
+                           onchange="SetNmByNip(this.value, 'namaAtas2')"
+                           class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-3">Nama</label>
+                <div class="col-sm-9">
+                    <input type="text" asp-for="NipAtas2Navigation.Nama" name="namaAtas2" id="namaAtas2" readonly class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label col-sm-3">Jabatan</label>
+                <div class="col-sm-9">
+                    <input type="text" asp-for="IdJabatanAtas2Navigation.Uraian" name="namaJab2" id="namaJab2" readonly class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-3"></label>
+                <div class="col-sm-9">
+                    <input type="submit" value="Simpan" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-success">Kembali</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<script>
+    function SetIdJabAtas(id, el, el2) {
+        //debugger;
+        //alert(id);
+        var s = document.getElementById(el);
+
+
+        $.ajax({
+            url: '/Admin/PeriodeNip/GetIdJabAtas/' + id,
+            type: 'GET',
+            dataType: 'text',
+            success: function (data) {
+                s.value = JSON.parse(data);
+                SetNamaJabatan(s.value, 'namaJab1');
+                SetIdJabAtas2(id, s.value, el2);
+            }
+        });
+
+
+    }
+
+    function SetIdJabAtas2(idbawah, id, el) {
+        //debugger;
+        //alert(id);
+        var s = document.getElementById(el);
+        if (id != 1) {
+
+
+            $.ajax({
+                url: '/Admin/PeriodeNip/GetIdJabAtas2/?idlama=' + idbawah + '&id=' + id  ,
+                type: 'GET',
+                dataType: 'text',
+                success: function (data) {
+                    s.value = JSON.parse(data);
+                    SetNamaJabatan(s.value, 'namaJab2');
+                }
+            });
+        }
+        else {
+            s.value = 1;
+            SetNamaJabatan(s.value, 'namaJab2');
+        }
+
+    }
+    function SetNamaJabatan(id, el) {
+        //debugger;
+
+        var s = document.getElementById(el);
+        //alert(id);
+        $.ajax({
+            url: '/Admin/PeriodeNip/GetNamaJab/' + id,
+            type: 'GET',
+            dataType: 'text',
+            success: function (data) {
+                s.value = JSON.parse(data);
+            }
+        });
+    }
+
+    function SetNmByNip(str, el) {
+        debugger;
+        var nip = str;
+        var s = document.getElementById(el);
+
+        $.ajax({
+            url: '/Admin/PeriodeKaSKPD/GetNamaByNip/' + nip,
+            type: 'GET',
+            dataType: 'text',
+            success: function (data) {
+                s.value = JSON.parse(data);
+            }
+        });
+    }
+</script>
+
+

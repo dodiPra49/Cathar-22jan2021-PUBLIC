@@ -1,0 +1,81 @@
+﻿@model IEnumerable<New.Models.Jabatan>
+
+@using New.Repositories
+@inject ServiceJabatan varServiceJabatan
+
+@{
+    ViewData["IdDiv"] = ViewBag.SubDiv;
+    ViewData["IdUnitKerja"] = ViewBag.IdUnitKerja;
+    var modelData = varServiceJabatan.GetById(ViewBag.IdJabatan);
+}
+
+<br />
+@*@if (ViewBag.TheResult != true)
+    {
+        <div class="alert alert-success">
+            <strong>Thank you!</strong> Your query has been submitted.
+        </div>
+    }*@
+
+<partial name="~/Views/Shared/_StatusMessage.cshtml" view-data="ViewData[ViewBag.ErrorMsg]" />
+
+@*<div>
+        IdUnitKerja = @ViewBag.IdUnitKerja;
+    </div>
+    <div>
+        IdDiv = @ViewBag.SubDiv;
+    </div>
+    <div>
+        IdJab = @ViewBag.IdJabatan;
+    </div>*@
+
+<h4>Daftar Jabatan</h4>
+<br />
+
+<form asp-action="Index" method="get">
+
+    <div class="form-group row justify-content-center">
+
+        <label class="justify-content-end">Unit Kerja :</label>
+        <div class="col-sm-4">
+            <select type="text" id="Pilihan" name="IdUnitKerja" value="@ViewBag.IdUnitKerja"
+                    onchange="this.form.submit()"
+                    class="form-control small" asp-items="ViewBag.ListUnitKerja">
+            </select>
+        </div>
+        <div>
+            <button name="SubDiv" type="submit" value="2" class="btn btn-info btn-sm">
+                <i class="fa fa-book-open small"></i> Tambah
+            </button>
+        </div>
+    </div>
+
+
+</form>
+
+
+<hr />
+
+@*//List*@
+@if (ViewBag.SubDiv == 1)
+{
+    <partial name="_IndexA" model="@Model" />
+}
+
+@*//Add*@
+@if (ViewBag.SubDiv == 2)
+{
+    <partial name="_CreateA" model="new Jabatan()" view-data="ViewData" />
+}
+
+@*//Edit*@
+@if (ViewBag.SubDiv == 3)
+{
+    <partial name="_EditA" model="modelData" view-data="ViewData" />
+}
+
+@*//Delete*@
+@if (ViewBag.SubDiv == 4)
+{
+    <partial name="_DeleteA" model="modelData" view-data="ViewData" />
+}
